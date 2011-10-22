@@ -33,7 +33,7 @@ keep
 %% set parameters of what we want to do
 
 % nr of samples
-bign = 10^4;
+bign = 10^5;
 
 % equif-flag
 equif=0;
