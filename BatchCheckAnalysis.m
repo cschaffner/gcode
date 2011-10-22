@@ -5,13 +5,30 @@
 % * fixing 6 blocks
 % * fixing 6 blocks and using subsets
 
-% all of this for all-1 and FH weights
+% analysis of results produced by BatchCheck.m
 
-% created:    Oct 21, 2011
+% created:    Oct 22, 2011
 % by Christian Schaffner, c.schaffner@uva.nl
 
 %% clear workspace and read in genetic code matrices
 geneticcode;
+
+%% read in results
+load BatchCheckResult.mat;
+
+% add a first column with the index number
+result = [[1:size(result,1)]' result];
+counter=0;
+keep=[];
+
+for i=1:size(result,1)
+    if sum(result(i,2:7)<20)>4 
+        counter=counter+1;
+        keep=[result(i,:) ; keep];
+    end
+end
+
+keep
 
 %% set parameters of what we want to do
 
@@ -31,9 +48,11 @@ wtransver3=0;
 
 
 %% loop over all aaindex1 values
+looplist=keep(:,1);
 
-nrloops=size(aaindex1,1);
-result=zeros(nrloops,6);
+%% loop over all indices in looplist
+nrloops=size(looplist,1);
+result=zeros(nrloops,7);
 
 % timing stuff
 tstart=tic;
@@ -41,36 +60,38 @@ interv=4;
 lasttm=0;
 
 for j=1:nrloops
+    ind=looplist(j);
+    result(j,1)=ind;
     % skip aa values where some properties are unknown
-    if sum(isnan(aaindex1(j,:)))>0
-        result(j,1:6)=NaN;
+    if sum(isnan(aaindex1(ind,:)))>0
+        result(j,2:7)=NaN;
         continue;
     end
-    A=mypdist(aaindex1(j,:)') .^ 2;
+    A=mypdist(aaindex1(ind,:)') .^ 2;
     
     % all blocks    
     fixed = [];
     permutecode_random;    
     % how many codes were smaller than sgc for st weights?
-    result(j,1)=sum(vals_st(:) < sgc_st);
+    result(j,2)=sum(vals_st(:) < sgc_st);
     % how many codes were smaller than sgc for FH weights?    
-    result(j,2)=sum(vals_FH(:) < sgc_FH);
+    result(j,3)=sum(vals_FH(:) < sgc_FH);
 
     % fixing 6 blocks
     fixed = [1 2 3 10 11 18 19];
     permutecode_random;    
     % how many codes were smaller than sgc for st weights?
-    result(j,3)=sum(vals_st(:) < sgc_st);
+    result(j,4)=sum(vals_st(:) < sgc_st);
     % how many codes were smaller than sgc for FH weights?    
-    result(j,4)=sum(vals_FH(:) < sgc_FH);
+    result(j,5)=sum(vals_FH(:) < sgc_FH);
     
     % fixing 6 blocks and subsets
     fixed = [1 2 3 10 11 18 19];
     permutecode_subsets;    
     % how many codes were smaller than sgc for st weights?
-    result(j,5)=sum(vals_st(:) < sgc_st);
+    result(j,6)=sum(vals_st(:) < sgc_st);
     % how many codes were smaller than sgc for FH weights?    
-    result(j,6)=sum(vals_FH(:) < sgc_FH);
+    result(j,7)=sum(vals_FH(:) < sgc_FH);
         
     
     % timing and status stuff:
@@ -82,8 +103,7 @@ for j=1:nrloops
              interv=interv*2;
          end
          fprintf('after %u seconds: %2.2g%% done. expected time left:%6.1f seconds\n',tm,100*j/nrloops,tm*((nrloops/j)-1));
-         save('BatchCheckResult.mat','result','j');
+         save('BatchCheckRefinedResult.mat','result','j');
      end
 
 end
-
