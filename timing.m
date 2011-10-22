@@ -35,7 +35,7 @@ function output=timing(index,fracdone)
                  % if interv<100, double time interval
                  interv(index)=interv(index)*2;
              end
-             fprintf('index %1.1f: after %6.1f seconds: %2.2g%% done. expected time left:%6.1f seconds\n',index,tm,100*fracdone,tm*((1/fracdone)-1));
+             fprintf('index %1f: after %6.1f seconds: %2.2g%% done. expected time left:%6.1f seconds\n',index,tm,100*fracdone,tm*((1/fracdone)-1));
              output=1;
         end
     end
