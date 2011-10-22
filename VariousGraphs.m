@@ -22,7 +22,7 @@ fixed = [1 2 3 10 11 18 19];
 %fixed =[];
 
 % how many samples
-bign = 10^4;
+bign = 10^5;
 
 % suppression of stop codons
 % set in geneticcode.m

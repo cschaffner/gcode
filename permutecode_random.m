@@ -45,11 +45,6 @@ vals=zeros(4,bign);
 vals_st=zeros(bign,1);
 vals_FH=zeros(bign,1);
 
-% timing stuff
-tstart_random=tic;
-interv=4;
-lasttm=0;
-
 % loop over bign permutations
 for i=1:bign
     
@@ -67,16 +62,8 @@ for i=1:bign
     vals_FH(i)=sum(sum(A .* BFH(p,p)));
     
     % timing and status stuff:
-     tm=floor(toc(tstart_random));
-     if(mod(tm,interv)==0 && tm>lasttm)
-         lasttm=tm;
-         if(interv<100)
-             % if interv<100, double time interval
-             interv=interv*2;
-         end
-         fprintf('after %u seconds: %2.2g%% done. expected time left:%6.1f seconds\n',tm,100*i/bign,tm*((bign/i)-1));
-     end
-
+    timing(1,i/bign);
+    
 end
 
 %% compute sum of all entries of the B matrices ("norm"), 

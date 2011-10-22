@@ -35,11 +35,6 @@ wtransver3=0;
 nrloops=size(aaindex1,1);
 result=zeros(nrloops,6);
 
-% timing stuff
-tstart=tic;
-interv=4;
-lasttm=0;
-
 for j=1:nrloops
     % skip aa values where some properties are unknown
     if sum(isnan(aaindex1(j,:)))>0
@@ -56,7 +51,7 @@ for j=1:nrloops
     % how many codes were smaller than sgc for FH weights?    
     result(j,2)=sum(vals_FH(:) < sgc_FH);
 
-    % fixing 6 blocks
+    % fixing 7 blocks
     fixed = [1 2 3 10 11 18 19];
     permutecode_random;    
     % how many codes were smaller than sgc for st weights?
@@ -74,16 +69,9 @@ for j=1:nrloops
         
     
     % timing and status stuff:
-     tm=floor(toc(tstart));
-     if(mod(tm,interv)==0 && tm>lasttm)
-         lasttm=tm;
-         if(interv<100)
-             % if interv<100, double time interval
-             interv=interv*2;
-         end
-         fprintf('after %u seconds: %2.2g%% done. expected time left:%6.1f seconds\n',tm,100*j/nrloops,tm*((nrloops/j)-1));
-         save('BatchCheckResult.mat','result','j');
-     end
+    if timing(3,j/nrloops) 
+        save('BatchCheckResult.mat','result','j');
+    end
 
 end
 

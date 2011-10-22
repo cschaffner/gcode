@@ -17,7 +17,7 @@
 
 %%
 % clear workspace
-clear;
+clear all;
 
 % declare some variable global
 global Code ASerge BlockSize probSerge aminos aa_theoreticalPR;

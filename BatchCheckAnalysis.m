@@ -33,7 +33,7 @@ keep
 %% set parameters of what we want to do
 
 % nr of samples
-bign = 10^5;
+bign = 10^3;
 
 % equif-flag
 equif=0;
@@ -53,11 +53,6 @@ looplist=keep(:,1);
 %% loop over all indices in looplist
 nrloops=size(looplist,1);
 result=zeros(nrloops,7);
-
-% timing stuff
-tstart=tic;
-interv=4;
-lasttm=0;
 
 for j=1:nrloops
     ind=looplist(j);
@@ -95,15 +90,8 @@ for j=1:nrloops
         
     
     % timing and status stuff:
-     tm=floor(toc(tstart));
-     if(mod(tm,interv)==0 && tm>lasttm)
-         lasttm=tm;
-         if(interv<100)
-             % if interv<100, double time interval
-             interv=interv*2;
-         end
-         fprintf('after %u seconds: %2.2g%% done. expected time left:%6.1f seconds\n',tm,100*j/nrloops,tm*((nrloops/j)-1));
-         save('BatchCheckRefinedResult.mat','result','j');
+     if(timing(3,j/nrloops)
+        save('BatchCheckRefinedResult.mat','result','j');
      end
 
 end

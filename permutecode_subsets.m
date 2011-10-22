@@ -103,13 +103,6 @@ vals=zeros(4,size(per,1));
 vals_st=zeros(bign,1);
 vals_FH=zeros(bign,1);
 
-
-% timing stuff
-tstart_subset=tic;
-interv=4;
-lasttm=0;
-
-
 % loop over all permutations
 for i=1:size(per,1)
     p=per(i,:);
@@ -125,15 +118,9 @@ for i=1:size(per,1)
     % compute values
     vals_FH(i)=sum(sum(A .* BFH(p,p)));
 
-     tm=floor(toc(tstart_subset));
-     if(mod(tm,interv)==0 && tm>lasttm)
-         lasttm=tm;
-         if(interv<100)
-             interv=interv*2;
-         end
-         fprintf('after %u seconds: %2.2g%% done. expected time left:%6.1f seconds\n',tm,100*i/size(per,1),tm*((size(per,1)/i)-1));
-     end
-
+    % timing stuff:
+    timing(2,i/size(per,1));
+    
     
 end
 
