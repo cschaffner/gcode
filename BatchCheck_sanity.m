@@ -5,36 +5,18 @@
 % * fixing 6 blocks
 % * fixing 6 blocks and using subsets
 
-% analysis of results produced by BatchCheck.m
+% all of this for all-1 and FH weights
 
-% created:    Oct 22, 2011
+% created:    Oct 21, 2011
 % by Christian Schaffner, c.schaffner@uva.nl
 
 %% clear workspace and read in genetic code matrices
 geneticcode;
 
-%% read in results
-load BatchCheckResult.mat;
-
-% add a first column with the index number
-result = [[1:size(result,1)]' result];
-counter=0;
-keep=[];
-
-for i=1:size(result,1)
-    if sum(result(i,2:7)<20)>4 
-        counter=counter+1;
-        keep=[result(i,:) ; keep];
-    end
-end
-
-keep
-
-return
 %% set parameters of what we want to do
 
 % nr of samples
-bign = 10^3;
+bign = 10^5;
 
 % equif-flag
 equif=0;
@@ -47,13 +29,18 @@ wtransver2=0;
 wtransit3=0;
 wtransver3=0;
 
+aaindex1=vertcat(aaindex1,aa_w1',aa_FH');
+
 
 %% loop over all aaindex1 values
-looplist=keep(:,1);
+looplist=[545:554]';
 
 %% loop over all indices in looplist
 nrloops=size(looplist,1);
 result=zeros(nrloops,7);
+
+%intialize timer
+timing(3,0);
 
 for j=1:nrloops
     ind=looplist(j);
@@ -92,7 +79,7 @@ for j=1:nrloops
     
     % timing and status stuff:
      if(timing(3,j/nrloops)==1)
-        save('BatchCheckRefinedResult.mat','result','j');
+        save('BatchCheckResult_sanity.mat','result','j');
      end
 
 end

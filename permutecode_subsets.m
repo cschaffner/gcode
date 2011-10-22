@@ -103,6 +103,9 @@ vals=zeros(4,size(per,1));
 vals_st=zeros(bign,1);
 vals_FH=zeros(bign,1);
 
+% initialize timer
+timing(2,0);
+
 % loop over all permutations
 for i=1:size(per,1)
     p=per(i,:);
@@ -120,7 +123,6 @@ for i=1:size(per,1)
 
     % timing stuff:
     timing(2,i/size(per,1));
-    
     
 end
 

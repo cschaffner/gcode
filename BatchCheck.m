@@ -16,7 +16,7 @@ geneticcode;
 %% set parameters of what we want to do
 
 % nr of samples
-bign = 10^4;
+bign = 10^3;
 
 % equif-flag
 equif=0;
@@ -31,47 +31,53 @@ wtransver3=0;
 
 
 %% loop over all aaindex1 values
+looplist=[1:size(aaindex1,1)]';
 
-nrloops=size(aaindex1,1);
-result=zeros(nrloops,6);
+%% loop over all indices in looplist
+nrloops=size(looplist,1);
+result=zeros(nrloops,7);
+
+%intialize timer
+timing(3,0);
 
 for j=1:nrloops
+    ind=looplist(j);
+    result(j,1)=ind;
     % skip aa values where some properties are unknown
-    if sum(isnan(aaindex1(j,:)))>0
-        result(j,1:6)=NaN;
+    if sum(isnan(aaindex1(ind,:)))>0
+        result(j,2:7)=NaN;
         continue;
     end
-    A=mypdist(aaindex1(j,:)') .^ 2;
+    A=mypdist(aaindex1(ind,:)') .^ 2;
     
     % all blocks    
     fixed = [];
     permutecode_random;    
     % how many codes were smaller than sgc for st weights?
-    result(j,1)=sum(vals_st(:) < sgc_st);
+    result(j,2)=sum(vals_st(:) < sgc_st);
     % how many codes were smaller than sgc for FH weights?    
-    result(j,2)=sum(vals_FH(:) < sgc_FH);
+    result(j,3)=sum(vals_FH(:) < sgc_FH);
 
-    % fixing 7 blocks
+    % fixing 6 blocks
     fixed = [1 2 3 10 11 18 19];
     permutecode_random;    
     % how many codes were smaller than sgc for st weights?
-    result(j,3)=sum(vals_st(:) < sgc_st);
+    result(j,4)=sum(vals_st(:) < sgc_st);
     % how many codes were smaller than sgc for FH weights?    
-    result(j,4)=sum(vals_FH(:) < sgc_FH);
+    result(j,5)=sum(vals_FH(:) < sgc_FH);
     
     % fixing 6 blocks and subsets
     fixed = [1 2 3 10 11 18 19];
     permutecode_subsets;    
     % how many codes were smaller than sgc for st weights?
-    result(j,5)=sum(vals_st(:) < sgc_st);
+    result(j,6)=sum(vals_st(:) < sgc_st);
     % how many codes were smaller than sgc for FH weights?    
-    result(j,6)=sum(vals_FH(:) < sgc_FH);
+    result(j,7)=sum(vals_FH(:) < sgc_FH);
         
     
     % timing and status stuff:
-    if timing(3,j/nrloops) 
+     if(timing(3,j/nrloops)==1)
         save('BatchCheckResult.mat','result','j');
-    end
+     end
 
 end
-

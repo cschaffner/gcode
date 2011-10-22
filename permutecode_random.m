@@ -45,6 +45,9 @@ vals=zeros(4,bign);
 vals_st=zeros(bign,1);
 vals_FH=zeros(bign,1);
 
+% initialize timer
+timing(1,0);
+
 % loop over bign permutations
 for i=1:bign
     
