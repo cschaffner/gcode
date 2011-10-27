@@ -25,7 +25,7 @@ global Code ASerge BlockSize probSerge aminos aa_theoreticalPR;
 % suppression switch
 suppression = 0;
 
-%% number and names of amino acids
+%% names of amino acids
 aminos = {'Phe','Leu','Ile','Met','Val','Ser','Pro','Thr','Ala','Tyr', 'His', 'Gln', 'Asn', 'Lys', 'Asp', 'Glu', 'Cys', 'Trp', 'Arg', 'Gly', 'STOP'};
 
 %% various amino acid values (variable names starting with aa_)
