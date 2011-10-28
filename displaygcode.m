@@ -1,10 +1,13 @@
 %% given a permutation and a set of 20 amino acid values
 % nicely displays the according genetic code
 
-% takes as input a set of 20 values
-% takes as input a row vector describing a permutation (if not specified,
+% takes as input a set of 20 values,
+% a flag normalize,
+% a row vector describing a permutation (if not specified,
 % the identity permutation, i.e. the standard genetic code, is used)
 
+% if the flag normalize is non-zero, the values are normalized to have
+% mean 0 and standard deviation 10.
 % output: displays the according genetic code
 
 % created: 25 March 2011
@@ -12,7 +15,9 @@
 % by Christian Schaffner, c.schaffner@uva.nl
 
 
-function displaygcode(values, varargin)
+function displaygcode(values, normalize, varargin)
+
+%% define genetic code
   % names of amino acids
   aminos = {'Phe','Leu','Ile','Met','Val','Ser','Pro','Thr','Ala','Tyr', 'His', 'Gln', 'Asn', 'Lys', 'Asp', 'Glu', 'Cys', 'Trp', 'Arg', 'Gly', 'STOP'};
 
@@ -51,6 +56,7 @@ function displaygcode(values, varargin)
         end
     end
 
+%% process permutation input
   optargin = size(varargin,2);      
   if (optargin>1)
       error('function should be called with a row vector of values, and possibly a row vector of permutation');
@@ -75,26 +81,30 @@ function displaygcode(values, varargin)
       error('elements are not distinct');
   end
   
-  aa_values=[values 0];
+  
+%% process value input
+  if normalize
+      values=10*(values-mean(values))/std(values);
+      formatstring='%4s %+6.1f \t'; % use fixed-point in this case
+  else
+      formatstring='%4s %+7.6g \t'; % use relevant digits here
+  end
+  aa_values=[values NaN];
 
-  %per = @(x) strcat(aminos(p(x)), '  ', num2str(ppSerge(p(x))));
-  %per = @(x) aminos(p(x));
-  per = @(x) strcat(aminos(p(x)), '  ', num2str(aa_values(p(x))));
-  
-  
+%% preprocessing and output
 
   %reshape code to usual display
   reCode=reshape(reshape(Code,16,4)',16,4);
   
-  AA=arrayfun(per,reCode);
-  
-  fprintf('\n');
-  disp(AA(1:4,:))
-  fprintf('\n');
-  disp(AA(5:8,:))
-  fprintf('\n');
-  disp(AA(9:12,:))
-  fprintf('\n');
-  disp(AA(13:16,:))
-  fprintf('\n');
+  % output
+  for i=1:16
+      for j=1:4
+        fprintf(formatstring,aminos{reCode(i,j)},aa_values(reCode(i,j)));       
+      end    
+      fprintf('\n');
+    if (mod(i,4)==0)
+        fprintf('\n');
+    end
+  end
+ 
 end

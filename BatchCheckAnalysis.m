@@ -30,11 +30,11 @@ end
 
 keep
 
-return
+
 %% set parameters of what we want to do
 
 % nr of samples
-bign = 10^3;
+bign = 10^5;
 
 % equif-flag
 equif=0;
@@ -50,6 +50,7 @@ wtransver3=0;
 
 %% loop over all aaindex1 values
 looplist=keep(:,1);
+looplist(1,1)=462;
 
 %% loop over all indices in looplist
 nrloops=size(looplist,1);
@@ -89,7 +90,7 @@ for j=1:nrloops
     % how many codes were smaller than sgc for FH weights?    
     result(j,7)=sum(vals_FH(:) < sgc_FH);
         
-    
+    return;
     % timing and status stuff:
      if(timing(3,j/nrloops)==1)
         save('BatchCheckRefinedResult.mat','result','j');

@@ -100,8 +100,8 @@ toc
 
 %% scores for all those permutations created above (implemented with for loop )
 vals=zeros(4,size(per,1));
-vals_st=zeros(bign,1);
-vals_FH=zeros(bign,1);
+vals_st=zeros(size(per,1),1);
+vals_FH=zeros(size(per,1),1);
 
 % initialize timer
 timing(2,0);

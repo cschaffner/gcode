@@ -140,7 +140,7 @@ fid = fopen('aaindex1');
 aaindex1=single(zeros(544,20));
 
 while ~feof(fid)
-    C = textscan(fid, 'H %s\n %*[^\n]');
+    C = textscan(fid, 'H %s\n D %[^\n]');
     if isempty(C{1}) 
            break ;
     end
@@ -154,6 +154,7 @@ while ~feof(fid)
 
     % assign values
     aaind_name(count)=C{1};
+    aaind_desc(count)=C{2};
     aaindex1(count,1)=F{4}(2);
     aaindex1(count,2)=F{1}(2);
     aaindex1(count,3)=F{10}(1);
