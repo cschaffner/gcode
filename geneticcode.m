@@ -302,6 +302,7 @@ Peter=Peter+Peter'-diag(diag(Peter)); % diagonal is already 0
 
 APeter= (10 .^ (Peter/100) )^1;
 APeter=APeter-diag(diag(APeter));
+MatrixPeter=Peter;
 
 %APeter = Peter;
 clear Peter;
