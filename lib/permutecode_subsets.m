@@ -94,7 +94,6 @@ for i=2:nrsubsets
     per=repmat(per,factorial(subsetsize(i)),1); % + int8(kron(nonzeropermute(fsubset{i}),ones(size(per,1),1)));
     per=per+nzperm(indices,:);
 end
-toc
 
 
 %% scores for all those permutations created above (implemented with for loop )

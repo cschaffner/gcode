@@ -1,4 +1,4 @@
-%% checking all amino-acid values from aaindex1 
+%% analysis of results produced by BatchCheck.m
 
 % for how well they do with respect to MS0-value in the following settings:
 % * permuting all blocks
