@@ -35,6 +35,7 @@ lib/ : this directory contains lots of helper functions, it has to be part of th
   lib/nonzeropermute.m : permutes non-zero entries of a vector
   lib/timing.m : timing and status functions for loops
   lib/displaygcode.m :  displays gen code given a permutation and a set of 20 amino acid values
+  lib/invertp.m : inverts a permutation
 
 solver/ : contains non-MATLAB solvers
   solver/qapbb.f : branch & bound FORTRAN solver from QAPLIB http://www.seas.upenn.edu/qaplib/codes.html
