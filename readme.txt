@@ -14,9 +14,14 @@ This directory contains the following files:
 * output/ : output directory where .fig and .pdf files are saved to
 
 * aaindex1 : database of amino acid properties from http://www.genome.jp/aaindex/
-* permutecode_random.m : generates random permutations and computes scores
-* randfixperm.m : samples a random permutation with some fixed positions
-* istransit.m : helper function for geneticcode.m 
-* mypdist.m : helper function for geneticcode.m
-* mypdistweights.m : helper function for geneticcode.m
-* randperm.m : samples a random permutation
+
+* the lib/ directory contains lots of helper functions
+* lib/permutecode_random.m : generates random permutations and computes scores
+* lib/randfixperm.m : samples a random permutation with some fixed positions
+* lib/istransit.m : helper function for geneticcode.m 
+* lib/mypdist.m : helper function for geneticcode.m
+* lib/mypdistweights.m : helper function for geneticcode.m
+* lib/randperm.m : samples a random permutation
+* lib/nonzeropermute.m : permutes non-zero entries of a vector
+* lib/timing.m : timing and status functions for loops
+* lib/displaygcode.m :  displays gen code given a permutation and a set of 20 amino acid values
