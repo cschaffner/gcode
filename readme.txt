@@ -25,6 +25,7 @@ lib/ : this directory contains lots of helper functions, it has to be part of th
   lib/geneticcode.m : clears workspace and reads in necessary data in order to play around and perform optimizations
   lib/permutecode_random.m : generates random permutations and computes scores
   lib/permutecode_subsets.m : checks all permutations among fixed subsets (specified in the code)
+  lib/CreateQAP.m : exports QAP problem to solver-readable format in subdirectory solver
 
   lib/randfixperm.m : samples a random permutation with some fixed positions
   lib/istransit.m : helper function for geneticcode.m 

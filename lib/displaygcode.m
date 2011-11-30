@@ -1,5 +1,6 @@
-%% given a permutation and a set of 20 amino acid values
 % nicely displays the according genetic code
+% takes a set of 20 amino acid values, a normalization flag 
+% and (optionally) a permutation
 
 % takes as input a set of 20 values,
 % a flag normalize,
@@ -8,6 +9,7 @@
 
 % if the flag normalize is non-zero, the values are normalized to have
 % mean 0 and standard deviation 10.
+
 % output: displays the according genetic code
 
 % created: 25 March 2011
@@ -61,7 +63,7 @@ function displaygcode(values, normalize, varargin)
   if (optargin>1)
       error('function should be called with a row vector of values, and possibly a row vector of permutation');
   elseif (optargin==1)
-      p=varargin;
+      p=varargin{1};
   elseif (optargin==0)
       p=1:21;
   end
@@ -99,7 +101,7 @@ function displaygcode(values, normalize, varargin)
   % output
   for i=1:16
       for j=1:4
-        fprintf(formatstring,aminos{reCode(i,j)},aa_values(reCode(i,j)));       
+        fprintf(formatstring,aminos{p(reCode(i,j))},aa_values(p(reCode(i,j))));       
       end    
       fprintf('\n');
     if (mod(i,4)==0)

@@ -6,6 +6,7 @@
 
 %% add the /lib directory to the search path
 path([pwd '/lib'],path);
+cd(fileparts(mfilename('fullpath')));
 
 %% clear workspace and read in genetic code matrices
 geneticcode;
@@ -15,20 +16,23 @@ geneticcode;
 % fixed blocks
 %fixed = [1 2 3 10 11 14 18 19];
 
-fixed = [1 2 3 10 11 18 19];
+%fixed = [1 2 3 10 11 18 19];
 %fixed = [1 18 19];
 %fixed = [1 2 10 11 18 19];
 %fixed = [1 2 11 18 19];
 %fixed = [1 2 18 19];
 
 %fixed = [1 2 3 10 11 18 19 4 12 14 15];
-%fixed =[];
+fixed =[];
 
 % how many samples
 bign = 10^5;
 
 % suppression of stop codons
 % set in geneticcode.m
+
+% equif flag
+equif=0;
 
 %% standard weights:
 wtransit1=1;
@@ -76,9 +80,54 @@ wtransver3=1;
 % wtransver3=1;
 % scoretype = 'Polar Harry weights';
 
+% implement weights:
+B1=wtransit1*Btransit1 + wtransver1*Btransver1;
+B2=wtransit2*Btransit2 + wtransver2*Btransver2;
+B3=wtransit3*Btransit3 + wtransver3*Btransver3;
+B=B1+B2+B3;
+
+% trim the matrices to 20 x 20 (get rid of the STOP codon row / column)
+B = B(1:20,1:20);
+B1 = B1(1:20,1:20);
+B2 = B2(1:20,1:20);
+B3 = B3(1:20,1:20);
+
+
+% if equif-flag is set, devide by block sizes
+if (equif) 
+    B = B ./ BlockSize(1:20,ones(1,20));
+    B1 = B1 ./ BlockSize(1:20,ones(1,20));
+    B2 = B2 ./ BlockSize(1:20,ones(1,20));
+    B3 = B3 ./ BlockSize(1:20,ones(1,20));
+    
+    die('The Bst and BFH matrices should probably also be treated here');
+end
+
+%% Original polar requirement
+scoretype = 'original Polar all-1-weights';
+A=Apolar;
+
+fixed = [1 2 3 10 11 18 19];
+permutecode_subsets;
+makegraph;
+
+return;
+
+%% Theoretical polar requirement
+scoretype = 'theoretical Polar all-1-weights subsets';
+A=Atheoreticpolar;
+
+CreateQAP(scoretype,fixed,A,B);
+return;
+
+permutecode_random;
+makegraph;
+
+return;
+
+
 %% Wimley & White
  
-equif=0;
 scoretype = 'AWW all-1-weights';
 A=AWW;
 
@@ -88,17 +137,6 @@ figure;
 makegraph;
 
 return;
-
-%% Theoretical polar requirement
-scoretype = 'theoretical Polar all-1-weights subsets';
-equif=0;
-A=Atheoreticpolar;
-permutecode_subsets;
-makegraph;
-
-return;
-
-
 
 
 %% Theoretical polar requirement
