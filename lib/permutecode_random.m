@@ -4,7 +4,7 @@
 % and computes a list of MS0 values where
 % MS0(p) = sum_{x,y} A_{x,y} * B_{p(x),p(y)}
 
-% requires 20x20 matrices A and B,B1,B2,B3 to be in the workspace
+% requires 20x20 matrices A and B,B1,B2,B3, Bst,BFH to be in the workspace
 % also expects equif, fixed, bign to be set
 
 % created: Feb 3, 2011
@@ -59,9 +59,9 @@ for i=1:bign
     vals(3,i)=sum(sum(A .* B2(p,p)));
     vals(4,i)=sum(sum(A .* B3(p,p)));
 
-    % compute values
+    % compute values for all-1 weights
     vals_st(i)=sum(sum(A .* Bst(p,p)));
-    % compute values
+    % compute values for FH weights
     vals_FH(i)=sum(sum(A .* BFH(p,p)));
     
     % timing and status stuff:

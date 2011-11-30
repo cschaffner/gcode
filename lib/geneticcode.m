@@ -15,8 +15,7 @@
 % cleanup: Oct 21, 2011
 % by Christian Schaffner, c.schaffner@uva.nl
 
-%%
-% clear workspace
+%% clear workspace
 clear all;
 
 % declare some variable global
@@ -135,7 +134,7 @@ AWW=mypdist(aa_WWValues') .^ 2;
 
 % reading in aaindex1
 count=0;
-fid = fopen('aaindex1');
+fid = fopen('../aaindex/aaindex1');
 % initialize array
 aaindex1=single(zeros(544,20));
 

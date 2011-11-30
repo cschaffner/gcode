@@ -6,7 +6,7 @@
 % and computes a list of MS0 values where
 % MS0(p) = sum_{x,y} A_{x,y} * B_{p(x),p(y)}
 
-% requires 20x20 matrices A and B,B1,B2,B3 to be in the workspace
+% requires 20x20 matrices A and B,B1,B2,B3 , Bst,BFH to be in the workspace
 % also expects fixed to be set
 
 % created: March 2, 2011
@@ -83,7 +83,6 @@ if (prod(factorial(subsetsize))>10^7)
   error(strcat(num2str(prod(factorial(subsetsize))),' permutations will require too much memory'));    
 end
 
-tic
 % start the matrix per of all permutations with the fixed blocks
 % and add the permutations of the first subset
 per=repmat(ffixed,factorial(subsetsize(1)),1) + int8(nonzeropermute(fsubset{1}));

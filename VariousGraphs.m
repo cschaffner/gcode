@@ -4,6 +4,9 @@
 % cleaned up: Oct 21, 2011
 % by Christian Schaffner, c.schaffner@uva.nl
 
+%% add the /lib directory to the search path
+path([pwd '/lib'],path);
+
 %% clear workspace and read in genetic code matrices
 geneticcode;
 
