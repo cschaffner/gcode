@@ -26,7 +26,7 @@ geneticcode;
 fixed =[];
 
 % how many samples
-bign = 10^5;
+bign = 10^4;
 
 % suppression of stop codons
 % set in geneticcode.m
@@ -103,24 +103,24 @@ if (equif)
     die('The Bst and BFH matrices should probably also be treated here');
 end
 
+%% Theoretical polar requirement
+scoretype = 'theoretical Polar all-1-weights subsets';
+A=Atheoreticpolar;
+
+% CreateQAP(scoretype,fixed,A,B);
+% return;
+
+permutecode_random;
+makegraph;
+
+return;
+
 %% Original polar requirement
 scoretype = 'original Polar all-1-weights';
 A=Apolar;
 
 fixed = [1 2 3 10 11 18 19];
 permutecode_subsets;
-makegraph;
-
-return;
-
-%% Theoretical polar requirement
-scoretype = 'theoretical Polar all-1-weights subsets';
-A=Atheoreticpolar;
-
-CreateQAP(scoretype,fixed,A,B);
-return;
-
-permutecode_random;
 makegraph;
 
 return;
