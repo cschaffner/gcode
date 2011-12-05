@@ -1,4 +1,4 @@
-%% performs Eppstein "inverse optimization" for 20 amino properties
+%% the objective function for Eppstein's "inverse optimization" for 20 amino properties
 
 % June 29, 2011
 % by Christian Schaffner, c.schaffner@uva.nl

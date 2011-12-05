@@ -4,15 +4,18 @@
 % by Christian Schaffner, c.schaffner@uva.nl
 % and Gunnar Klau
 
-% cleaned up version: Nov 30, 2011
+% cleaned up version: Dec 5, 2011
 
 %% clear workspace 
 geneticcode;
 
 %% declare global variables
+% in order to use them in Eppstein_objective.m and
+% Eppstein_q20_constraint.m
 global Bmatrix count popt targetvals
 
 %% set parameters of what we want to do
+equif=0;
 
 %% weights
 
@@ -59,12 +62,13 @@ scoretype = 'Eppstein_steer_all1weights';
 
 
 %% define filenames
-filenamebase=strcat('solver/',scoretype);
-filenameinput=strcat(filenamebase, '.input');
-filenamegood=strcat(filenamebase, '_good.txt');
-filenamepopt=strcat(filenamebase,'_popt.mat');
+solverdir=strcat(fileparts(mfilename('fullpath')),'/../solver/');
+Eppsteindir=strcat(fileparts(mfilename('fullpath')),'/');
 
-system(['cd ',pwd]);
+filenameinput=strcat(solverdir,scoretype, '.input');
+
+filenamegood=strcat(Eppsteindir,scoretype, '_perfect.txt');
+filenamepopt=strcat(Eppsteindir,scoretype,'_popt.mat');
 
 
 %% read in initializing values if they exist
@@ -113,14 +117,6 @@ if (exist(filenamepopt))
     x=x0(count,:);
 end
 
-% 
-% % x = [polar';0];
-% 
-% offset=1;
-% 
-% popt=popt(1:5801+offset,:);
-% xopt=xopt(1:(1+offset),:);
-% x=xopt(offset,:)';
 
 %% start the big loop
 while 1
@@ -130,7 +126,7 @@ fprintf('calculating with %i permutations now.\n',count)
 
 if (mod(count,10)==0)
     fprintf('reaching %i permutations. saving popt\n',count)
-    save(filenamepopt,'popt','xopt','x0','xgood','pgood','countgood','goodcount','stuckcounter','xvary','perfectcount','xperfect','countperfect');
+    save(filenamepopt,'popt','xopt','x0','stuckcounter','xvary','perfectcount','xperfect','countperfect');
 end
 
 %% do non-convex solver work
@@ -176,11 +172,11 @@ options.FinDiffType='central';
 options.TolFun = 1.000000e-04;
 options.TolCon = 1.000000e-04;
 
-[x,fval,exitflag]=fmincon(@Eppstein_objective,x0(count,:),[],[],Aeq,beq,lb,ub,@Eppstein_q20_constraint,options)
+[x,fval,exitflag]=fmincon(@Eppstein_objective,x0(count,:),[],[],Aeq,beq,lb,ub,@Eppstein_q20_constraint,options);
 
 % xopt(count) is the value that comes out of the fmincon optimization when
 % running starting from x0(count) and 
-% using popt(1:count,20) as constraints
+% using popt(1:count,1:20) as constraints
 xopt(count,:)=x;
 
 %% set up problem with new amino properties for solver
@@ -191,16 +187,16 @@ x=round(x*roundconst)/roundconst;
 A = mypdist(x(1:20)') .^ 2;
 B = Bmatrix;
 
-CreateQAP(scoretype,A,B);
+CreateQAP(scoretype,[],A,B);
 
 
 %% run heuristics
-% gqapd.f
-[status, result1] = system(['solver/gqapd < ',filenameinput,' | tail -2']);
+% "gqapd.f" GRASP algorithm
+[status, result1] = system([solverdir,'gqapd < ',filenameinput,' | tail -2']);
 % returns a new permutation as result
 
 % "qapsim.f" from http://www.seas.upenn.edu/qaplib/codes.html
-[status, result2] = system(['solver/mysimqap < ',filenameinput,' | tail -2']);
+[status, result2] = system([solverdir,'mysimqap < ',filenameinput,' | tail -2']);
 % returns a new permutation as result
 
 % reformat this new permutation
@@ -213,6 +209,7 @@ ppnew1=pnew1{1}';
 pnew2=textscan(result2(pos+1:end),'%2f');
 ppnew2=pnew2{1}';
 
+% take the best of the two 
 if (cost1{1}<=cost2{1})
     ppnew=ppnew1;
     cost=cost1{1};
@@ -231,33 +228,17 @@ if (cost<0 || size(ppnew,2)>20 || sum(sort(ppnew) ~= 1:20)>0)
     ppnew = popt(count,:);
 end
     
-if (sum(ppnew == 1:20)>15)
-    % that's a pretty good permutation
-    % let's better save the according x value
-    
-        goodcount=goodcount+1;
-        pgood(goodcount,:)=ppnew;
-        xgood(goodcount,:)=x;
-        countgood(goodcount)=count;
-    
-    % open the file with write permission
-    fid = fopen(filenamegood, 'a+');
-    if (sum(ppnew == 1:20)==20)
-        fprintf(fid, '\nfound a perfect permutation using %d constraints\n', count);
-    else 
-        fprintf(fid, '\nfound a good permutation using %d constraints\n', count);
-    end
-    fclose(fid);
-    dlmwrite(filenamegood, ppnew,'-append','delimiter',' ');    
-    dlmwrite(filenamegood, x,'-append','delimiter',' ','precision', '%1.4f');
-end
-
 if (sum(ppnew == 1:20)==20)
     % save these values
     if (perfectcount==0 || (perfectcount > 0 && sum(xperfect(perfectcount,:) == x)) < 20)
         perfectcount=perfectcount+1;        
         xperfect(perfectcount,:)=x;
         countperfect(perfectcount)=count;
+
+        fid = fopen(filenamegood, 'a+');
+        fprintf(fid, '\nfound a perfect permutation using %d constraints\n', count);
+        fclose(fid);
+        dlmwrite(filenamegood, x,'-append','delimiter',' ','precision', '%1.4f');
     end
 
     fprintf('bingo, not adding this one of course, just varying the values a little and see if we get another bingo.\n');
@@ -267,7 +248,7 @@ if (sum(ppnew == 1:20)==20)
     if (stuckcounter == 10)
         fprintf('after 10 random tries, we did not find more constraints. We are pretty much done and succeeded.\n');
         xvary
-        save(filenamepopt,'popt','xopt','x0','xgood','pgood','countgood','goodcount','stuckcounter','xvary','perfectcount','xperfect','countperfect');
+        save(filenamepopt,'popt','xopt','x0','stuckcounter','xvary','perfectcount','xperfect','countperfect');
         break;
     end
     randoffset = (rand(1,20)-0.5)/10;
@@ -293,7 +274,7 @@ else
     if (stuckcounter == 20) 
         fprintf('after 20 random tries, we are pretty much stuck with %i permutations\n',count);
         xvary
-        save(filenamepopt,'popt','xopt','x0','xgood','pgood','countgood','goodcount','stuckcounter','xvary','perfectcount','xperfect','countperfect');
+        save(filenamepopt,'popt','xopt','x0','stuckcounter','xvary','perfectcount','xperfect','countperfect');
         break;
     end
 end
