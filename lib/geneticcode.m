@@ -381,7 +381,11 @@ pGoldman=[11 15 12 14 9 6 7 8 20 10 5 2 1 17 18 4 16 13 3 19];
 pFHpolar=[15 11 12 13 18 6 17 20 19 14 9 8 2 5 4 3 10 16 1 7];
 
 % optimal for Atheoreticpolar, all-1 weights
-pTheorPR=[15 12 13 14 7 20 10 9 8 6 19 2 1 17 4 18 16 11 5 3];
+pTheorPRall1=[15 12 13 14 7 20 10 9 8 6 19 2 1 17 4 18 16 11 5 3];
+
+% optimal for Atheoreticpolar, all-1 weights
+pTheorPRFH=[12 11 16 13 17 18 14 20 19 6 7 8 2 5 3 4 10 15 9 1];
+
 
 %% Block structure of genetic code
 

@@ -55,12 +55,12 @@ wtransver3=1;
 
 %assign weights to different changes (sub-matrices of edges)
 %weights from Freeland-Hurst
-% wtransit1=1;
-% wtransver1=0.5;
-% wtransit2=0.5;
-% wtransver2=0.1;
-% wtransit3=1;
-% wtransver3=1;
+wtransit1=1;
+wtransver1=0.5;
+wtransit2=0.5;
+wtransver2=0.1;
+wtransit3=1;
+wtransver3=1;
 
 % Gunnar's weights
 % wtransit1=1;
@@ -104,11 +104,11 @@ if (equif)
 end
 
 %% Theoretical polar requirement
-scoretype = 'theoretical Polar all-1-weights subsets';
+scoretype = 'theoretical Polar FH weights';
 A=Atheoreticpolar;
 
-% CreateQAP(scoretype,fixed,A,B);
-% return;
+CreateQAP(scoretype,fixed,A,B);
+return;
 
 permutecode_random;
 makegraph;
