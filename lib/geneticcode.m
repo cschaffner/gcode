@@ -134,7 +134,7 @@ AWW=mypdist(aa_WWValues') .^ 2;
 
 % reading in aaindex1
 count=0;
-fid = fopen('aaindex/aaindex1');
+fid = fopen([fileparts(mfilename('fullpath')) '/../aaindex/aaindex1']);
 % initialize array
 aaindex1=single(zeros(544,20));
 

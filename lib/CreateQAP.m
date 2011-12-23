@@ -1,18 +1,19 @@
 %% helper function to export QAP problem to solver-readable format
-
+%
 % input: (filename,fixed,A,B)
 %   fixed : vector of fixed positions
 %   A : 20x20 matrix
 %   B : 20x20 matrix
 % writes QAP problem to file with name filename in subdirectory 'solver'
-
+%
 % created:    Nov 30, 2011
 % by Christian Schaffner, c.schaffner@uva.nl
 
 function CreateQAP(filename,fixed,A,B)
 
+
 %% define filenames
-filenamebase=strcat('solver/',filename);
+filenamebase=strcat(fileparts(mfilename('fullpath')),'/../solver/',filename);
 filenameinput=strcat(filenamebase, '.input');
 
 system(['cd ',pwd]);
