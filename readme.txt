@@ -12,7 +12,11 @@ This directory contains the following files:
 VariousGraphs.m : main program module to set parameters and run computations
 makegraph.m : draws histograms from computed values
 
+PaperGraphs.m : used to generate the data for histograms in the paper
+makePapergraph.m : used to draw the histograms that appear in the paper
+
 output/ : output directory where .fig and .pdf files are saved to
+PaperOutput/ : output directory with the graphs from the paper
 
 aaindex/ : directory with Japanese amino acid property database and procedures to check them
   aaindex1 : database of amino acid properties from http://www.genome.jp/aaindex/
@@ -22,20 +26,21 @@ aaindex/ : directory with Japanese amino acid property database and procedures t
   and more
 
 lib/ : this directory contains lots of helper functions, it has to be part of the MATLAB path
-  lib/geneticcode.m : clears workspace and reads in necessary data in order to play around and perform optimizations
-  lib/permutecode_random.m : generates random permutations and computes scores
-  lib/permutecode_subsets.m : checks all permutations among fixed subsets (specified in the code)
   lib/CreateQAP.m : exports QAP problem to solver-readable format in subdirectory solver
-
-  lib/randfixperm.m : samples a random permutation with some fixed positions
+  lib/displaygcode.m :  displays gen code given a permutation and a set of 20 amino acid values
+  lib/dsxy2figxy.m : converts data coordinates into figure coordinates
+  lib/geneticcode.m : clears workspace and reads in necessary data in order to play around and perform optimizations
+  lib/invertp.m : inverts a permutation
   lib/istransit.m : helper function for geneticcode.m 
   lib/mypdist.m : helper function for geneticcode.m
   lib/mypdistweights.m : helper function for geneticcode.m
-  lib/randperm.m : samples a random permutation
   lib/nonzeropermute.m : permutes non-zero entries of a vector
+  lib/permutecode_random.m : generates random permutations and computes scores
+  lib/permutecode_subsets.m : checks all permutations among fixed subsets (specified in the code)
+  lib/randfixperm.m : samples a random permutation with some fixed positions
+  lib/randperm.m : samples a random permutation
   lib/timing.m : timing and status functions for loops
-  lib/displaygcode.m :  displays gen code given a permutation and a set of 20 amino acid values
-  lib/invertp.m : inverts a permutation
+
 
 solver/ : contains non-MATLAB solvers
   solver/qapbb.f : branch & bound FORTRAN solver from QAPLIB http://www.seas.upenn.edu/qaplib/codes.html
