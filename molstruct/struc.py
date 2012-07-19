@@ -12,44 +12,38 @@ Output is the lower triangular matrix with the pairwise distances, in latex-comp
 
 python script written by Christian Schaffner, c.schaffner@uva.nl
 19 July 2012
-
-Possible improvements:
-* We could work with the whole rdkit to make it 
 """
 
-
+import os
 import subprocess
 import re
 from numpy import arange
-from rdkit import Chem
 
 class Bond:
     """ Bonds have three properties: BeginAtomIdx, EndAtomIdx, BondType (1,2) """
     def __init__(self,i1,i2,typ):
-        BeginAtomIdx=i1
-        EndAtomIdx=i2
-        BondType=typ
+        self.BeginAtomIdx=i1
+        self.EndAtomIdx=i2
+        self.BondType=typ        
+        if self.EndAtomIdx == None or self.BondType<0 or self.BondType>2:
+            raise
 
 class Molecule:
-    def __init__(self):
-        Bonds=[]
-    
-    def import_bonds(self,molfile):
+    def __init__(self,molfile):
         """ imports bonds from a molfile """
+        self.Bonds=[]        
         f = open(molfile, 'r')
-        # first two lines should be like:
-        #AtomContainer 1=    amino/phe.mol
-        #AtomContainer 2=    amino/gly.mol
         f.readline()
         f.readline()
         f.readline()
         line4=f.readline()
-        if line4[:-5]!='V2000':
+        # parse line 4 into elements
+        el4=re.findall('\w+',line4)
+        if el4[-1]!='V2000':
             print "mol version unknown: {0}".format(line4)
             raise
-        nr4=re.findall('\d+',line4)
-        nr_atoms=nr4[0]
-        nr_bonds=nr4[1]
+        nr_atoms=int(el4[0])
+        nr_bonds=int(el4[1])
         if nr_atoms==0:
             print 'molecule has no atoms'
             raise
@@ -61,8 +55,8 @@ class Molecule:
         # read in bonds
         for i in arange(nr_bonds):
             b_nrs=re.findall('\d+',f.readline())
-            Bond=Bond(b_nrs[0],b_nrs[1],b_nrs[2])
-            self.Bonds.append(Bond)
+            newBond=Bond(int(b_nrs[0]),int(b_nrs[1]),int(b_nrs[2]))
+            self.Bonds.append(newBond)
             
     def GetBonds(self):
         for b in self.Bonds:
@@ -74,16 +68,11 @@ def bonds_notin(m,match):
 #    print match    
     nr_bonds=0
     for bnd in m.GetBonds():
-        if bnd.GetBeginAtomIdx()+1 in match and bnd.GetEndAtomIdx()+1 in match:
+        if bnd.BeginAtomIdx in match and bnd.EndAtomIdx in match:
             continue
 #        print 'bond nr {0}: {1} - {2}, {3}'.format(nr_bonds,bnd.GetBeginAtomIdx(),bnd.GetEndAtomIdx(),
 #                                                   bnd.GetBondType())
-        if bnd.GetBondType()==Chem.rdchem.BondType.SINGLE:
-            nr_bonds += 1
-        elif bnd.GetBondType()==Chem.rdchem.BondType.DOUBLE:
-            nr_bonds += 2
-        else:
-            raise
+        nr_bonds += bnd.BondType
         
     return nr_bonds
 
@@ -94,9 +83,13 @@ def main():
     matrix=''
     for a1_i,a1 in enumerate(aa_list,1):
         matrixrow=[]    
-        for a2 in aa_list[:a1_i]:
-            subprocess.call('smsd -Q MOL -q amino/{0}.mol -T MOL -t amino/{1}.mol -o {0}_{1}.mol -g'.format(a1,a2),shell=True)
-            subprocess.call('cp mcs.out {0}_{1}_mcs.out'.format(a1,a2),shell=True)
+        for a2 in aa_list[:a1_i-1]:
+            print os.getcwd()
+            try:
+                with open('{0}_{1}_mcs.out'.format(a1,a2)) as f: pass
+            except IOError:
+                subprocess.call('smsd -Q MOL -q amino/{0}.mol -T MOL -t amino/{1}.mol -o {0}_{1}.mol -g'.format(a1,a2),shell=True)
+                subprocess.call('cp mcs.out {0}_{1}_mcs.out'.format(a1,a2),shell=True)
             
             f = open('{0}_{1}_mcs.out'.format(a1,a2), 'r')
             # first two lines should be like:
@@ -118,9 +111,8 @@ def main():
                 
             
             # get mol structures without sanitation and removing H atoms
-            m1=Chem.MolFromMolFile('amino/{0}.mol'.format(a1),False,False)
-            m2=Chem.MolFromMolFile('amino/{0}.mol'.format(a2),False,False)
-            sub=Chem.MolFromMolFile('{0}_{1}.mol'.format(a1,a2),False,False)
+            m1=Molecule('amino/{0}.mol'.format(a1))
+            m2=Molecule('amino/{0}.mol'.format(a2))            
             
             nr_bonds =  bonds_notin(m1,match1)
             nr_bonds += bonds_notin(m2,match2)
@@ -128,7 +120,9 @@ def main():
             print 'total nr of bonds between {0} and {1}: {2}'.format(a1,a2,nr_bonds)
             matrixrow.append('{:2.0f}'.format(nr_bonds))
     
-        matrix += '& '.join(matrixrow)
+        matrixrow.append(' 0')  # distance from itself is 0
+        # latex formatting:
+        matrix += '& '.join(matrixrow)  
         matrix += '\\\\ \n'
         
     print matrix
