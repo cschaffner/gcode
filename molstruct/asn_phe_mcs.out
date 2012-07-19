@@ -1,0 +1,34 @@
+AtomContainer 1=	amino/asn.mol
+AtomContainer 2=	amino/phe.mol
+Max atoms matched=	13
+4	4
+11	13
+13	17
+12	15
+9	12
+10	14
+7	10
+17	23
+14	16
+8	11
+3	3
+2	2
+1	1
+
+------------------------------------
+Query =NSC7891 asparagine.mol
+Target = NSC9959 phenylalanine.mol
+Max atoms matched=	13
+1	1
+2	2
+3	3
+4	4
+7	10
+8	11
+9	12
+10	14
+11	13
+12	15
+13	17
+14	16
+17	23

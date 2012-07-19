@@ -1,0 +1,42 @@
+AtomContainer 1=	amino/lys.mol
+AtomContainer 2=	amino/tyr.mol
+Max atoms matched=	17
+15	17
+19	23
+9	12
+3	3
+4	4
+8	11
+2	2
+21	22
+13	16
+1	1
+12	14
+6	9
+24	24
+5	10
+11	15
+10	13
+14	18
+
+------------------------------------
+Query =NSC9253 lysine.mol
+Target = NSC9973 tyrosine.mol
+Max atoms matched=	17
+1	1
+2	2
+3	3
+4	4
+5	10
+6	9
+8	11
+9	12
+10	13
+11	15
+12	14
+13	16
+14	18
+15	17
+19	23
+21	22
+24	24

@@ -1,0 +1,36 @@
+AtomContainer 1=	amino/his.mol
+AtomContainer 2=	amino/pro.mol
+Max atoms matched=	14
+18	17
+16	11
+10	3
+17	16
+15	12
+3	5
+6	8
+2	4
+14	10
+20	9
+5	7
+9	2
+4	6
+11	1
+
+------------------------------------
+Query =NSC27422 histidine.mol
+Target = NSC46703 proline.mol
+Max atoms matched=	14
+2	4
+3	5
+4	6
+5	7
+6	8
+9	2
+10	3
+11	1
+14	10
+15	12
+16	11
+17	16
+18	17
+20	9

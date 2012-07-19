@@ -1,0 +1,32 @@
+AtomContainer 1=	amino/asp.mol
+AtomContainer 2=	amino/thr.mol
+Max atoms matched=	12
+3	3
+11	9
+2	2
+8	7
+4	4
+16	17
+1	1
+10	10
+7	6
+12	11
+14	12
+9	8
+
+------------------------------------
+Query =NSC3973 aspartic acid.mol
+Target = NSC46701 threonine.mol
+Max atoms matched=	12
+1	1
+2	2
+3	3
+4	4
+7	6
+8	7
+9	8
+10	10
+11	9
+12	11
+14	12
+16	17

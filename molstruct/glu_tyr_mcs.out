@@ -1,0 +1,36 @@
+AtomContainer 1=	amino/glu.mol
+AtomContainer 2=	amino/tyr.mol
+Max atoms matched=	14
+14	18
+11	15
+5	5
+12	14
+8	11
+15	17
+2	2
+19	24
+10	13
+1	1
+9	12
+4	4
+13	16
+3	3
+
+------------------------------------
+Query =NSC9239 glutamic acid.mol
+Target = NSC9973 tyrosine.mol
+Max atoms matched=	14
+1	1
+2	2
+3	3
+4	4
+5	5
+8	11
+9	12
+10	13
+11	15
+12	14
+13	16
+14	18
+15	17
+19	24

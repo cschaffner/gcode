@@ -1,0 +1,32 @@
+AtomContainer 1=	amino/cys.mol
+AtomContainer 2=	amino/tyr.mol
+Max atoms matched=	12
+8	15
+9	14
+3	11
+13	17
+1	1
+4	12
+12	18
+5	13
+11	24
+10	16
+2	2
+6	3
+
+------------------------------------
+Query =NSC8746 cysteine.mol
+Target = NSC9973 tyrosine.mol
+Max atoms matched=	12
+1	1
+2	2
+3	11
+4	12
+5	13
+6	3
+8	15
+9	14
+10	16
+11	24
+12	18
+13	17

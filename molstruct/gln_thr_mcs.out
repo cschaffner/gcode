@@ -1,0 +1,36 @@
+AtomContainer 1=	amino/gln.mol
+AtomContainer 2=	amino/thr.mol
+Max atoms matched=	14
+1	1
+15	12
+8	6
+13	11
+2	2
+20	17
+10	8
+17	14
+12	9
+4	4
+11	10
+9	7
+3	3
+16	15
+
+------------------------------------
+Query =NSC27421 glutamine.mol
+Target = NSC46701 threonine.mol
+Max atoms matched=	14
+1	1
+2	2
+3	3
+4	4
+8	6
+9	7
+10	8
+11	10
+12	9
+13	11
+15	12
+16	15
+17	14
+20	17

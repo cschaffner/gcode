@@ -1,0 +1,26 @@
+AtomContainer 1=	amino/gly.mol
+AtomContainer 2=	amino/val.mol
+Max atoms matched=	9
+1	1
+4	7
+6	10
+2	2
+10	19
+9	11
+7	9
+3	6
+5	8
+
+------------------------------------
+Query =NSC25936 aminoacetic acid.mol
+Target = NSC9755 valine.mol
+Max atoms matched=	9
+1	1
+2	2
+3	6
+4	7
+5	8
+6	10
+7	9
+9	11
+10	19

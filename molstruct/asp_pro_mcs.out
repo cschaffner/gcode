@@ -1,0 +1,32 @@
+AtomContainer 1=	amino/asp.mol
+AtomContainer 2=	amino/pro.mol
+Max atoms matched=	12
+4	6
+9	1
+7	2
+11	17
+1	8
+16	9
+12	10
+3	5
+14	11
+2	4
+8	3
+13	12
+
+------------------------------------
+Query =NSC3973 aspartic acid.mol
+Target = NSC46703 proline.mol
+Max atoms matched=	12
+1	8
+2	4
+3	5
+4	6
+7	2
+8	3
+9	1
+11	17
+12	10
+13	12
+14	11
+16	9

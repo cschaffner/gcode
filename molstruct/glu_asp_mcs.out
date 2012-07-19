@@ -1,0 +1,34 @@
+AtomContainer 1=	amino/glu.mol
+AtomContainer 2=	amino/asp.mol
+Max atoms matched=	13
+8	7
+10	9
+13	12
+2	2
+12	10
+15	13
+11	11
+19	16
+9	8
+1	1
+3	3
+14	14
+4	4
+
+------------------------------------
+Query =NSC9239 glutamic acid.mol
+Target = NSC3973 aspartic acid.mol
+Max atoms matched=	13
+1	1
+2	2
+3	3
+4	4
+8	7
+9	8
+10	9
+11	11
+12	10
+13	12
+14	14
+15	13
+19	16

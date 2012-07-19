@@ -1,0 +1,38 @@
+AtomContainer 1=	amino/his.mol
+AtomContainer 2=	amino/leu.mol
+Max atoms matched=	15
+16	14
+10	8
+5	6
+1	5
+17	21
+15	15
+3	3
+13	17
+2	4
+14	16
+20	22
+12	18
+9	7
+4	2
+11	9
+
+------------------------------------
+Query =NSC27422 histidine.mol
+Target = NSC9252 leucine.mol
+Max atoms matched=	15
+1	5
+2	4
+3	3
+4	2
+5	6
+9	7
+10	8
+11	9
+12	18
+13	17
+14	16
+15	15
+16	14
+17	21
+20	22

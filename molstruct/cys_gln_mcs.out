@@ -1,0 +1,32 @@
+AtomContainer 1=	amino/cys.mol
+AtomContainer 2=	amino/gln.mol
+Max atoms matched=	12
+12	15
+3	8
+9	11
+5	10
+1	1
+8	12
+10	13
+2	2
+4	9
+6	3
+13	14
+11	20
+
+------------------------------------
+Query =NSC8746 cysteine.mol
+Target = NSC27421 glutamine.mol
+Max atoms matched=	12
+1	1
+2	2
+3	8
+4	9
+5	10
+6	3
+8	12
+9	11
+10	13
+11	20
+12	15
+13	14

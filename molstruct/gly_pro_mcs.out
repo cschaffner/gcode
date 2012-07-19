@@ -1,0 +1,24 @@
+AtomContainer 1=	amino/gly.mol
+AtomContainer 2=	amino/pro.mol
+Max atoms matched=	8
+10	9
+4	3
+1	8
+5	1
+2	4
+7	17
+9	10
+3	2
+
+------------------------------------
+Query =NSC25936 aminoacetic acid.mol
+Target = NSC46703 proline.mol
+Max atoms matched=	8
+1	8
+2	4
+3	2
+4	3
+5	1
+7	17
+9	10
+10	9

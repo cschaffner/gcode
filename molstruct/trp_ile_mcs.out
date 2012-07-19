@@ -1,0 +1,36 @@
+AtomContainer 1=	amino/trp.mol
+AtomContainer 2=	amino/ile.mol
+Max atoms matched=	14
+20	15
+18	16
+17	17
+2	4
+13	7
+3	3
+27	22
+1	5
+16	18
+15	9
+26	12
+14	8
+4	2
+12	1
+
+------------------------------------
+Query =NSC13118 tryptophan.mol
+Target = NSC9958 isoleucine.mol
+Max atoms matched=	14
+1	5
+2	4
+3	3
+4	2
+12	1
+13	7
+14	8
+15	9
+16	18
+17	17
+18	16
+20	15
+26	12
+27	22

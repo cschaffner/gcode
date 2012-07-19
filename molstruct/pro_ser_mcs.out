@@ -1,0 +1,30 @@
+AtomContainer 1=	amino/pro.mol
+AtomContainer 2=	amino/ser.mol
+Max atoms matched=	11
+9	11
+2	3
+17	9
+3	4
+12	13
+4	2
+10	10
+1	5
+11	14
+8	1
+5	7
+
+------------------------------------
+Query =NSC46703 proline.mol
+Target = NSC9960 serine.mol
+Max atoms matched=	11
+1	5
+2	3
+3	4
+4	2
+5	7
+8	1
+9	11
+10	10
+11	14
+12	13
+17	9

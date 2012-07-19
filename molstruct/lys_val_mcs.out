@@ -1,0 +1,36 @@
+AtomContainer 1=	amino/lys.mol
+AtomContainer 2=	amino/val.mol
+Max atoms matched=	14
+11	10
+13	11
+15	12
+12	9
+4	5
+24	19
+2	2
+17	17
+3	3
+16	18
+9	7
+1	1
+10	8
+8	6
+
+------------------------------------
+Query =NSC9253 lysine.mol
+Target = NSC9755 valine.mol
+Max atoms matched=	14
+1	1
+2	2
+3	3
+4	5
+8	6
+9	7
+10	8
+11	10
+12	9
+13	11
+15	12
+16	18
+17	17
+24	19

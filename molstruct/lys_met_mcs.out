@@ -1,0 +1,38 @@
+AtomContainer 1=	amino/lys.mol
+AtomContainer 2=	amino/met.mol
+Max atoms matched=	15
+13	12
+15	14
+2	2
+14	15
+12	10
+3	6
+10	5
+8	3
+9	4
+16	17
+4	7
+11	11
+1	1
+24	13
+17	16
+
+------------------------------------
+Query =NSC9253 lysine.mol
+Target = NSC9241 methionine.mol
+Max atoms matched=	15
+1	1
+2	2
+3	6
+4	7
+8	3
+9	4
+10	5
+11	11
+12	10
+13	12
+14	15
+15	14
+16	17
+17	16
+24	13

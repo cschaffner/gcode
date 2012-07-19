@@ -1,0 +1,30 @@
+AtomContainer 1=	amino/ala.mol
+AtomContainer 2=	amino/ile.mol
+Max atoms matched=	11
+2	4
+12	18
+3	7
+6	5
+9	15
+10	16
+5	9
+4	8
+13	17
+1	3
+11	22
+
+------------------------------------
+Query =NSC7602 alanine.mol
+Target = NSC9958 isoleucine.mol
+Max atoms matched=	11
+1	3
+2	4
+3	7
+4	8
+5	9
+6	5
+9	15
+10	16
+11	22
+12	18
+13	17

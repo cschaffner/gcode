@@ -1,0 +1,34 @@
+AtomContainer 1=	amino/val.mol
+AtomContainer 2=	amino/leu.mol
+Max atoms matched=	13
+3	3
+7	8
+19	22
+8	9
+10	17
+1	5
+5	2
+9	18
+2	4
+11	16
+18	13
+6	7
+12	15
+
+------------------------------------
+Query =NSC9755 valine.mol
+Target = NSC9252 leucine.mol
+Max atoms matched=	13
+1	5
+2	4
+3	3
+5	2
+6	7
+7	8
+8	9
+9	18
+10	17
+11	16
+12	15
+18	13
+19	22

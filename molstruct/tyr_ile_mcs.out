@@ -1,0 +1,36 @@
+AtomContainer 1=	amino/tyr.mol
+AtomContainer 2=	amino/ile.mol
+Max atoms matched=	14
+14	18
+12	8
+15	17
+13	9
+11	7
+3	3
+16	16
+18	15
+19	12
+2	4
+4	2
+24	22
+5	1
+1	5
+
+------------------------------------
+Query =NSC9973 tyrosine.mol
+Target = NSC9958 isoleucine.mol
+Max atoms matched=	14
+1	5
+2	4
+3	3
+4	2
+5	1
+11	7
+12	8
+13	9
+14	18
+15	17
+16	16
+18	15
+19	12
+24	22

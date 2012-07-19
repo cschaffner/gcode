@@ -1,0 +1,36 @@
+AtomContainer 1=	amino/arg.mol
+AtomContainer 2=	amino/thr.mol
+Max atoms matched=	14
+21	10
+11	7
+6	2
+22	9
+7	1
+20	11
+5	3
+12	8
+10	6
+17	14
+4	4
+19	12
+16	15
+26	17
+
+------------------------------------
+Query =NSC7914 arginine.mol
+Target = NSC46701 threonine.mol
+Max atoms matched=	14
+4	4
+5	3
+6	2
+7	1
+10	6
+11	7
+12	8
+16	15
+17	14
+19	12
+20	11
+21	10
+22	9
+26	17

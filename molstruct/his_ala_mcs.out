@@ -1,0 +1,32 @@
+AtomContainer 1=	amino/his.mol
+AtomContainer 2=	amino/ala.mol
+Max atoms matched=	12
+20	11
+12	13
+3	1
+1	6
+10	4
+15	9
+9	3
+16	8
+2	2
+14	10
+11	5
+13	12
+
+------------------------------------
+Query =NSC27422 histidine.mol
+Target = NSC7602 alanine.mol
+Max atoms matched=	12
+1	6
+2	2
+3	1
+9	3
+10	4
+11	5
+12	13
+13	12
+14	10
+15	9
+16	8
+20	11

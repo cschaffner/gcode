@@ -1,0 +1,34 @@
+AtomContainer 1=	amino/arg.mol
+AtomContainer 2=	amino/asn.mol
+Max atoms matched=	13
+20	12
+22	10
+4	4
+26	17
+21	11
+19	13
+6	2
+5	3
+11	8
+12	9
+18	14
+7	1
+10	7
+
+------------------------------------
+Query =NSC7914 arginine.mol
+Target = NSC7891 asparagine.mol
+Max atoms matched=	13
+4	4
+5	3
+6	2
+7	1
+10	7
+11	8
+12	9
+18	14
+19	13
+20	12
+21	11
+22	10
+26	17

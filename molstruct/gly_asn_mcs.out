@@ -1,0 +1,26 @@
+AtomContainer 1=	amino/gly.mol
+AtomContainer 2=	amino/asn.mol
+Max atoms matched=	9
+2	2
+3	7
+4	8
+6	11
+5	9
+9	12
+7	10
+1	1
+10	17
+
+------------------------------------
+Query =NSC25936 aminoacetic acid.mol
+Target = NSC7891 asparagine.mol
+Max atoms matched=	9
+1	1
+2	2
+3	7
+4	8
+5	9
+6	11
+7	10
+9	12
+10	17

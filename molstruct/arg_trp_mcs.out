@@ -1,0 +1,44 @@
+AtomContainer 1=	amino/arg.mol
+AtomContainer 2=	amino/trp.mol
+Max atoms matched=	18
+1	6
+2	11
+21	17
+18	20
+15	26
+6	2
+19	19
+5	3
+12	15
+10	13
+13	25
+11	14
+3	12
+4	4
+7	1
+20	18
+22	16
+26	27
+
+------------------------------------
+Query =NSC7914 arginine.mol
+Target = NSC13118 tryptophan.mol
+Max atoms matched=	18
+1	6
+2	11
+3	12
+4	4
+5	3
+6	2
+7	1
+10	13
+11	14
+12	15
+13	25
+15	26
+18	20
+19	19
+20	18
+21	17
+22	16
+26	27

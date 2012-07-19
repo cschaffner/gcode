@@ -1,0 +1,44 @@
+AtomContainer 1=	amino/arg.mol
+AtomContainer 2=	amino/gln.mol
+Max atoms matched=	18
+17	16
+19	14
+20	13
+18	15
+5	3
+7	1
+4	4
+10	8
+11	9
+22	11
+6	2
+16	17
+13	19
+21	12
+2	6
+26	20
+3	5
+12	10
+
+------------------------------------
+Query =NSC7914 arginine.mol
+Target = NSC27421 glutamine.mol
+Max atoms matched=	18
+2	6
+3	5
+4	4
+5	3
+6	2
+7	1
+10	8
+11	9
+12	10
+13	19
+16	17
+17	16
+18	15
+19	14
+20	13
+21	12
+22	11
+26	20

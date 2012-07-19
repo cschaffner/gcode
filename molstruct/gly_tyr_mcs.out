@@ -1,0 +1,26 @@
+AtomContainer 1=	amino/gly.mol
+AtomContainer 2=	amino/tyr.mol
+Max atoms matched=	9
+10	24
+1	1
+9	16
+4	12
+5	13
+6	15
+2	2
+7	14
+3	11
+
+------------------------------------
+Query =NSC25936 aminoacetic acid.mol
+Target = NSC9973 tyrosine.mol
+Max atoms matched=	9
+1	1
+2	2
+3	11
+4	12
+5	13
+6	15
+7	14
+9	16
+10	24

@@ -1,0 +1,42 @@
+AtomContainer 1=	amino/arg.mol
+AtomContainer 2=	amino/leu.mol
+Max atoms matched=	17
+19	14
+21	18
+22	17
+20	16
+5	3
+14	21
+4	2
+10	7
+15	20
+11	8
+6	4
+18	15
+17	13
+26	22
+3	6
+12	9
+7	5
+
+------------------------------------
+Query =NSC7914 arginine.mol
+Target = NSC9252 leucine.mol
+Max atoms matched=	17
+3	6
+4	2
+5	3
+6	4
+7	5
+10	7
+11	8
+12	9
+14	21
+15	20
+17	13
+18	15
+19	14
+20	16
+21	18
+22	17
+26	22

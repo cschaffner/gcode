@@ -1,0 +1,32 @@
+AtomContainer 1=	amino/ser.mol
+AtomContainer 2=	amino/leu.mol
+Max atoms matched=	12
+11	22
+8	18
+3	7
+1	5
+5	9
+14	14
+4	8
+13	15
+2	4
+9	17
+10	16
+7	3
+
+------------------------------------
+Query =NSC9960 serine.mol
+Target = NSC9252 leucine.mol
+Max atoms matched=	12
+1	5
+2	4
+3	7
+4	8
+5	9
+7	3
+8	18
+9	17
+10	16
+11	22
+13	15
+14	14

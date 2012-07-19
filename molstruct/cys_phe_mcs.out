@@ -1,0 +1,32 @@
+AtomContainer 1=	amino/cys.mol
+AtomContainer 2=	amino/phe.mol
+Max atoms matched=	12
+1	1
+2	2
+6	3
+12	17
+3	10
+4	11
+13	16
+10	15
+9	13
+8	14
+11	23
+5	12
+
+------------------------------------
+Query =NSC8746 cysteine.mol
+Target = NSC9959 phenylalanine.mol
+Max atoms matched=	12
+1	1
+2	2
+3	10
+4	11
+5	12
+6	3
+8	14
+9	13
+10	15
+11	23
+12	17
+13	16

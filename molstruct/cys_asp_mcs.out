@@ -1,0 +1,32 @@
+AtomContainer 1=	amino/cys.mol
+AtomContainer 2=	amino/asp.mol
+Max atoms matched=	12
+3	7
+12	14
+2	2
+9	10
+11	16
+1	1
+8	11
+10	12
+6	3
+4	8
+13	13
+5	9
+
+------------------------------------
+Query =NSC8746 cysteine.mol
+Target = NSC3973 aspartic acid.mol
+Max atoms matched=	12
+1	1
+2	2
+3	7
+4	8
+5	9
+6	3
+8	11
+9	10
+10	12
+11	16
+12	14
+13	13

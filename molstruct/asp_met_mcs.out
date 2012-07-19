@@ -1,0 +1,34 @@
+AtomContainer 1=	amino/asp.mol
+AtomContainer 2=	amino/met.mol
+Max atoms matched=	13
+9	5
+10	11
+16	13
+1	1
+7	3
+14	14
+13	15
+8	4
+12	12
+11	10
+2	2
+4	7
+3	6
+
+------------------------------------
+Query =NSC3973 aspartic acid.mol
+Target = NSC9241 methionine.mol
+Max atoms matched=	13
+1	1
+2	2
+3	6
+4	7
+7	3
+8	4
+9	5
+10	11
+11	10
+12	12
+13	15
+14	14
+16	13

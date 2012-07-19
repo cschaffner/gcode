@@ -1,0 +1,32 @@
+AtomContainer 1=	amino/asn.mol
+AtomContainer 2=	amino/ser.mol
+Max atoms matched=	12
+8	4
+14	13
+7	3
+13	14
+2	2
+17	11
+9	5
+1	1
+12	10
+10	9
+11	8
+3	7
+
+------------------------------------
+Query =NSC7891 asparagine.mol
+Target = NSC9960 serine.mol
+Max atoms matched=	12
+1	1
+2	2
+3	7
+7	3
+8	4
+9	5
+10	9
+11	8
+12	10
+13	14
+14	13
+17	11

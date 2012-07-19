@@ -1,0 +1,50 @@
+AtomContainer 1=	amino/trp.mol
+AtomContainer 2=	amino/tyr.mol
+Max atoms matched=	21
+22	22
+16	15
+17	14
+18	16
+26	23
+15	13
+2	2
+1	1
+5	5
+20	17
+27	24
+14	12
+13	11
+4	4
+8	9
+24	20
+3	3
+12	10
+10	6
+9	7
+19	18
+
+------------------------------------
+Query =NSC13118 tryptophan.mol
+Target = NSC9973 tyrosine.mol
+Max atoms matched=	21
+1	1
+2	2
+3	3
+4	4
+5	5
+8	9
+9	7
+10	6
+12	10
+13	11
+14	12
+15	13
+16	15
+17	14
+18	16
+19	18
+20	17
+22	22
+24	20
+26	23
+27	24

@@ -1,0 +1,46 @@
+AtomContainer 1=	amino/val.mol
+AtomContainer 2=	amino/val.mol
+Max atoms matched=	19
+13	18
+3	3
+11	11
+4	5
+1	1
+14	17
+19	19
+12	12
+18	13
+10	9
+8	8
+17	14
+7	7
+15	16
+2	2
+6	6
+9	10
+5	4
+16	15
+
+------------------------------------
+Query =NSC9755 valine.mol
+Target = NSC9755 valine.mol
+Max atoms matched=	19
+1	1
+2	2
+3	3
+4	5
+5	4
+6	6
+7	7
+8	8
+9	10
+10	9
+11	11
+12	12
+13	18
+14	17
+15	16
+16	15
+17	14
+18	13
+19	19

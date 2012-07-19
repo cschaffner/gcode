@@ -1,0 +1,52 @@
+AtomContainer 1=	amino/tyr.mol
+AtomContainer 2=	amino/phe.mol
+Max atoms matched=	22
+12	11
+13	12
+15	13
+11	10
+19	18
+3	3
+9	8
+6	6
+1	1
+20	19
+4	4
+2	2
+14	14
+18	16
+10	9
+16	15
+23	22
+24	23
+17	17
+22	21
+5	5
+7	7
+
+------------------------------------
+Query =NSC9973 tyrosine.mol
+Target = NSC9959 phenylalanine.mol
+Max atoms matched=	22
+1	1
+2	2
+3	3
+4	4
+5	5
+6	6
+7	7
+9	8
+10	9
+11	10
+12	11
+13	12
+14	14
+15	13
+16	15
+17	17
+18	16
+19	18
+20	19
+22	21
+23	22
+24	23

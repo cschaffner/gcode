@@ -1,0 +1,40 @@
+AtomContainer 1=	amino/lys.mol
+AtomContainer 2=	amino/gln.mol
+Max atoms matched=	16
+13	13
+4	4
+15	14
+14	15
+12	11
+8	8
+9	9
+3	3
+16	17
+2	2
+11	12
+10	10
+1	1
+5	5
+17	16
+24	20
+
+------------------------------------
+Query =NSC9253 lysine.mol
+Target = NSC27421 glutamine.mol
+Max atoms matched=	16
+1	1
+2	2
+3	3
+4	4
+5	5
+8	8
+9	9
+10	10
+11	12
+12	11
+13	13
+14	15
+15	14
+16	17
+17	16
+24	20

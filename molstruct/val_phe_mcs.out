@@ -1,0 +1,32 @@
+AtomContainer 1=	amino/val.mol
+AtomContainer 2=	amino/phe.mol
+Max atoms matched=	12
+8	12
+19	23
+5	4
+9	14
+6	10
+7	11
+1	1
+10	13
+11	15
+12	17
+2	2
+3	3
+
+------------------------------------
+Query =NSC9755 valine.mol
+Target = NSC9959 phenylalanine.mol
+Max atoms matched=	12
+1	1
+2	2
+3	3
+5	4
+6	10
+7	11
+8	12
+9	14
+10	13
+11	15
+12	17
+19	23

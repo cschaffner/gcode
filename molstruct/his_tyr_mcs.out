@@ -1,0 +1,38 @@
+AtomContainer 1=	amino/his.mol
+AtomContainer 2=	amino/tyr.mol
+Max atoms matched=	15
+17	19
+15	18
+9	11
+4	4
+20	24
+16	17
+14	16
+2	2
+12	15
+1	1
+13	14
+11	13
+3	3
+5	5
+10	12
+
+------------------------------------
+Query =NSC27422 histidine.mol
+Target = NSC9973 tyrosine.mol
+Max atoms matched=	15
+1	1
+2	2
+3	3
+4	4
+5	5
+9	11
+10	12
+11	13
+12	15
+13	14
+14	16
+15	18
+16	17
+17	19
+20	24

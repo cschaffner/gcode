@@ -1,0 +1,34 @@
+AtomContainer 1=	amino/asp.mol
+AtomContainer 2=	amino/tyr.mol
+Max atoms matched=	13
+14	17
+1	1
+10	15
+16	24
+8	12
+3	3
+11	14
+12	16
+13	18
+4	4
+9	13
+2	2
+7	11
+
+------------------------------------
+Query =NSC3973 aspartic acid.mol
+Target = NSC9973 tyrosine.mol
+Max atoms matched=	13
+1	1
+2	2
+3	3
+4	4
+7	11
+8	12
+9	13
+10	15
+11	14
+12	16
+13	18
+14	17
+16	24

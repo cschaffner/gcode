@@ -1,0 +1,42 @@
+AtomContainer 1=	amino/arg.mol
+AtomContainer 2=	amino/ile.mol
+Max atoms matched=	17
+16	14
+19	15
+20	16
+17	13
+5	3
+7	5
+4	2
+10	7
+11	8
+22	17
+6	4
+15	11
+14	12
+21	18
+26	22
+3	1
+12	9
+
+------------------------------------
+Query =NSC7914 arginine.mol
+Target = NSC9958 isoleucine.mol
+Max atoms matched=	17
+3	1
+4	2
+5	3
+6	4
+7	5
+10	7
+11	8
+12	9
+14	12
+15	11
+16	14
+17	13
+19	15
+20	16
+21	18
+22	17
+26	22

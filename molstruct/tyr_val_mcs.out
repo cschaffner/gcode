@@ -1,0 +1,32 @@
+AtomContainer 1=	amino/tyr.mol
+AtomContainer 2=	amino/val.mol
+Max atoms matched=	12
+15	9
+1	1
+13	8
+16	11
+18	12
+14	10
+12	7
+4	5
+24	19
+11	6
+3	3
+2	2
+
+------------------------------------
+Query =NSC9973 tyrosine.mol
+Target = NSC9755 valine.mol
+Max atoms matched=	12
+1	1
+2	2
+3	3
+4	5
+11	6
+12	7
+13	8
+14	10
+15	9
+16	11
+18	12
+24	19

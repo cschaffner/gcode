@@ -1,0 +1,32 @@
+AtomContainer 1=	amino/asp.mol
+AtomContainer 2=	amino/val.mol
+Max atoms matched=	12
+10	10
+4	5
+1	1
+9	8
+7	6
+16	19
+8	7
+14	12
+3	3
+11	9
+12	11
+2	2
+
+------------------------------------
+Query =NSC3973 aspartic acid.mol
+Target = NSC9755 valine.mol
+Max atoms matched=	12
+1	1
+2	2
+3	3
+4	5
+7	6
+8	7
+9	8
+10	10
+11	9
+12	11
+14	12
+16	19

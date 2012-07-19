@@ -1,0 +1,32 @@
+AtomContainer 1=	amino/asn.mol
+AtomContainer 2=	amino/val.mol
+Max atoms matched=	12
+8	7
+4	5
+9	8
+14	12
+7	6
+17	19
+1	1
+12	11
+3	3
+10	10
+11	9
+2	2
+
+------------------------------------
+Query =NSC7891 asparagine.mol
+Target = NSC9755 valine.mol
+Max atoms matched=	12
+1	1
+2	2
+3	3
+4	5
+7	6
+8	7
+9	8
+10	10
+11	9
+12	11
+14	12
+17	19

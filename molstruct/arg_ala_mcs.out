@@ -1,0 +1,32 @@
+AtomContainer 1=	amino/arg.mol
+AtomContainer 2=	amino/ala.mol
+Max atoms matched=	12
+20	10
+5	1
+19	8
+10	3
+6	2
+18	9
+22	12
+26	11
+7	6
+11	4
+21	13
+12	5
+
+------------------------------------
+Query =NSC7914 arginine.mol
+Target = NSC7602 alanine.mol
+Max atoms matched=	12
+5	1
+6	2
+7	6
+10	3
+11	4
+12	5
+18	9
+19	8
+20	10
+21	13
+22	12
+26	11

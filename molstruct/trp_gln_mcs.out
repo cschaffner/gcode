@@ -1,0 +1,40 @@
+AtomContainer 1=	amino/trp.mol
+AtomContainer 2=	amino/gln.mol
+Max atoms matched=	16
+25	19
+19	15
+20	14
+18	13
+3	3
+11	6
+14	9
+13	8
+2	2
+17	11
+16	12
+1	1
+27	20
+15	10
+4	4
+12	5
+
+------------------------------------
+Query =NSC13118 tryptophan.mol
+Target = NSC27421 glutamine.mol
+Max atoms matched=	16
+1	1
+2	2
+3	3
+4	4
+11	6
+12	5
+13	8
+14	9
+15	10
+16	12
+17	11
+18	13
+19	15
+20	14
+25	19
+27	20

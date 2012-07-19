@@ -1,0 +1,48 @@
+AtomContainer 1=	amino/met.mol
+AtomContainer 2=	amino/met.mol
+Max atoms matched=	20
+3	3
+2	2
+14	15
+13	13
+1	1
+16	17
+9	9
+15	14
+12	12
+8	8
+18	20
+20	18
+10	11
+17	16
+6	6
+7	7
+5	5
+11	10
+4	4
+19	19
+
+------------------------------------
+Query =NSC9241 methionine.mol
+Target = NSC9241 methionine.mol
+Max atoms matched=	20
+1	1
+2	2
+3	3
+4	4
+5	5
+6	6
+7	7
+8	8
+9	9
+10	11
+11	10
+12	12
+13	13
+14	15
+15	14
+16	17
+17	16
+18	20
+19	19
+20	18

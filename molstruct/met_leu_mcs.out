@@ -1,0 +1,36 @@
+AtomContainer 1=	amino/met.mol
+AtomContainer 2=	amino/leu.mol
+Max atoms matched=	14
+13	22
+3	7
+17	13
+10	18
+5	9
+4	8
+15	14
+7	2
+12	16
+1	5
+2	4
+6	3
+14	15
+11	17
+
+------------------------------------
+Query =NSC9241 methionine.mol
+Target = NSC9252 leucine.mol
+Max atoms matched=	14
+1	5
+2	4
+3	7
+4	8
+5	9
+6	3
+7	2
+10	18
+11	17
+12	16
+13	22
+14	15
+15	14
+17	13

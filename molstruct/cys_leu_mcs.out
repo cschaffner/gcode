@@ -1,0 +1,32 @@
+AtomContainer 1=	amino/cys.mol
+AtomContainer 2=	amino/leu.mol
+Max atoms matched=	12
+2	4
+9	17
+6	3
+4	8
+3	7
+1	5
+8	18
+13	14
+10	16
+12	15
+11	22
+5	9
+
+------------------------------------
+Query =NSC8746 cysteine.mol
+Target = NSC9252 leucine.mol
+Max atoms matched=	12
+1	5
+2	4
+3	7
+4	8
+5	9
+6	3
+8	18
+9	17
+10	16
+11	22
+12	15
+13	14

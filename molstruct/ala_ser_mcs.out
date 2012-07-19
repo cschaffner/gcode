@@ -1,0 +1,32 @@
+AtomContainer 1=	amino/ala.mol
+AtomContainer 2=	amino/ser.mol
+Max atoms matched=	12
+11	11
+12	9
+9	13
+5	5
+4	4
+1	7
+8	14
+10	10
+6	1
+13	8
+3	3
+2	2
+
+------------------------------------
+Query =NSC7602 alanine.mol
+Target = NSC9960 serine.mol
+Max atoms matched=	12
+1	7
+2	2
+3	3
+4	4
+5	5
+6	1
+8	14
+9	13
+10	10
+11	11
+12	9
+13	8

@@ -1,0 +1,36 @@
+AtomContainer 1=	amino/glu.mol
+AtomContainer 2=	amino/his.mol
+Max atoms matched=	14
+14	16
+5	5
+15	15
+13	14
+12	12
+8	9
+2	2
+19	20
+9	10
+1	1
+10	11
+11	13
+4	4
+3	3
+
+------------------------------------
+Query =NSC9239 glutamic acid.mol
+Target = NSC27422 histidine.mol
+Max atoms matched=	14
+1	1
+2	2
+3	3
+4	4
+5	5
+8	9
+9	10
+10	11
+11	13
+12	12
+13	14
+14	16
+15	15
+19	20

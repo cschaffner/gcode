@@ -1,0 +1,32 @@
+AtomContainer 1=	amino/asn.mol
+AtomContainer 2=	amino/pro.mol
+Max atoms matched=	12
+4	6
+3	5
+17	9
+9	1
+11	17
+1	8
+12	10
+2	4
+14	11
+7	2
+8	3
+13	12
+
+------------------------------------
+Query =NSC7891 asparagine.mol
+Target = NSC46703 proline.mol
+Max atoms matched=	12
+1	8
+2	4
+3	5
+4	6
+7	2
+8	3
+9	1
+11	17
+12	10
+13	12
+14	11
+17	9

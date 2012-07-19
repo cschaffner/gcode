@@ -1,0 +1,32 @@
+AtomContainer 1=	amino/thr.mol
+AtomContainer 2=	amino/phe.mol
+Max atoms matched=	12
+2	2
+6	10
+11	15
+3	3
+1	1
+12	17
+10	13
+9	14
+8	12
+7	11
+17	23
+4	4
+
+------------------------------------
+Query =NSC46701 threonine.mol
+Target = NSC9959 phenylalanine.mol
+Max atoms matched=	12
+1	1
+2	2
+3	3
+4	4
+6	10
+7	11
+8	12
+9	14
+10	13
+11	15
+12	17
+17	23

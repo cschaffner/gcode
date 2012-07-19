@@ -1,0 +1,26 @@
+AtomContainer 1=	amino/gly.mol
+AtomContainer 2=	amino/ile.mol
+Max atoms matched=	9
+1	5
+7	17
+5	9
+9	16
+2	4
+10	22
+6	18
+4	8
+3	7
+
+------------------------------------
+Query =NSC25936 aminoacetic acid.mol
+Target = NSC9958 isoleucine.mol
+Max atoms matched=	9
+1	5
+2	4
+3	7
+4	8
+5	9
+6	18
+7	17
+9	16
+10	22
