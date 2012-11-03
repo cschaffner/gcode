@@ -1,6 +1,10 @@
 %% computes MS0 values using the subsets approach
-% all possible permutations are checked, but only those with a better
+% all possible permutations (120^4 = 207.36 * 10^6) are checked, 
+% but only those with a better
 % error-robustness than the SGC are kept
+
+% in more details: 120^3 = 1728000 permutations are checked in the inner
+% loop, which is executed 120 times.
 
 % this allows to later figure out (in checkallperms_subsets.m) what happens 
 % if we fix some of the blocks

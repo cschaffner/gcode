@@ -1,6 +1,10 @@
 %% computes MS0 values using the subsets approach
-% all possible permutations are checked, but only those with a better
+% all possible permutations (120^4 = 207.36 * 10^6) are checked, 
+% but only those with a better
 % error-robustness than the SGC are kept
+
+% in more details: 120^3 = 1728000 permutations are checked in the inner
+% loop, which is executed 120 times.
 
 % this allows to later figure out (in checkallperms_subsets.m) what happens 
 % if we fix some of the blocks
@@ -83,8 +87,7 @@ if (prod(factorial(subsetsize(1:3)))>10^7)
 end
 
 tic
-% start the matrix per of all permutations with the fixed blocks
-% and add the permutations of the first subset
+% start the matrix per of all permutations with the first block
 per=int8(nonzeropermute(fsubset{1}));
 % then "mix in" all the others
 for i=2:nrsubsets-1
@@ -95,6 +98,7 @@ for i=2:nrsubsets-1
   per=per+nzperm(indices,:);
 end
 
+% the last one is kept separate
 nzperm=int8(nonzeropermute(fsubset{4}));
 toc
 
@@ -129,7 +133,7 @@ timing(1,0);
 
 
 % loop over all permutations
-for j=1:3 % size(nzperm,1)
+for j=1:size(nzperm,1)
 for i=1:size(per,1)
     p=per(i,:)+nzperm(j,:);
 
