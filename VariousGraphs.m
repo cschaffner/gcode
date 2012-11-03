@@ -1,5 +1,7 @@
 %% main module to generate histograms
 
+% that's the module to play around with
+
 % created:    Feb 7, 2011
 % cleaned up: Oct 21, 2011
 % by Christian Schaffner, c.schaffner@uva.nl

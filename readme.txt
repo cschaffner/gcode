@@ -3,6 +3,7 @@ These tools have been used to obtain the numerical results and plots in a forthc
 by Harry Buhrman, Peter van der Gulik, Dave Spijer, Gunnar Klau, Leen Stougie, Christian Schaffner
 
 created: Oct 21, 2011
+last modified: Nov 3, 2012
 by Christian Schaffner, c.schaffner@uva.nl
 
 Installation:
@@ -13,7 +14,8 @@ VariousGraphs.m : main program module to set parameters and run computations
 makegraph.m : draws histograms from computed values
 
 PaperGraphs.m : used to generate the data for histograms in the paper
-makePapergraph.m : used to draw the histograms that appear in the paper
+makePapergraph.m : used to draw the histograms that appear in main body of the paper
+makeAppendixGraph.m: used to draw the histograms that appear in the appendix of the paper
 
 output/ : output directory where .fig and .pdf files are saved to
 PaperOutput/ : output directory with the graphs from the paper
