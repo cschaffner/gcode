@@ -1,4 +1,9 @@
-%% check if subsets of three fixed blocks make the standard genetic code optimal
+%% check which fixed amino-acid assignments make the standard genetic code optimal
+% when using the subset approach
+
+% file expects as input the output of permutecode_allsubsets.m which checks
+% all possible 120^4 permutations (when using subsets) and stores the ones
+% that are better than the SGC
 
 % created: March 7, 2011
 % cleaned up: Nov 3, 2012
@@ -8,13 +13,13 @@
 %% initialize stuff
 geneticcode;
 
-% possibly fixed blocks
+% potentially fixed blocks
 fixed = [1 2 3 10 11 14 18 19];
 
 
 % load results of all subset computations
-scoretype = 'theoretic Polar all subsets';
-load 'output/theoretic Polar all subsets0blcksfix1samples.mat'
+%scoretype = 'theoretic Polar all subsets';
+load 'theoretic_Polar_all_good_subset_permutations.mat'
 
 % scoretype = 'Benner all subsets';
 % load 'output/Benner all subsets0blcksfix1samples.mat'
@@ -37,14 +42,17 @@ wtransver3=1;
 %% do the work
 
 disp('2 blocks fixed');
-% create all possibilities of 3 fixed blocks
+% create all possibilities of 2 fixed blocks
 fixblocks=mycombnk(fixed,2);
 for i=1:size(fixblocks,1)
     fb=fixblocks(i,:);
+    % compute the nb of codes that are better than the SGC for fixed blocks
+    % fb
     nb=size(find(minper(:,fb(1))==fb(1) & minper(:,fb(2))==fb(2) ),1);
-    if (nb<2)
+    if (nb<3)
         fb   
         find(minper(:,fb(1))==fb(1) & minper(:,fb(2))==fb(2)  )
+        minvals(find(minper(:,fb(1))==fb(1) & minper(:,fb(2))==fb(2)  ))
     end
 end
 
@@ -57,6 +65,7 @@ for i=1:size(fixblocks,1)
     if (nb<3)
         fb   
         find(minper(:,fb(1))==fb(1) & minper(:,fb(2))==fb(2) & minper(:,fb(3))==fb(3) )
+        minvals(find(minper(:,fb(1))==fb(1) & minper(:,fb(2))==fb(2) & minper(:,fb(3))==fb(3) ))
     end
 end
 
@@ -65,7 +74,7 @@ fixblocks=mycombnk(fixed,4);
 for i=1:size(fixblocks,1)
     fb=fixblocks(i,:);
     nb=size(find(minper(:,fb(1))==fb(1) & minper(:,fb(2))==fb(2) & minper(:,fb(3))==fb(3) & minper(:,fb(4))==fb(4) ),1);
-    if (nb==1)
+    if (nb<3)
         fb        
     end
 end
