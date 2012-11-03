@@ -35,13 +35,13 @@ bign = 10^4;
 equif=0;
 
 %% standard weights:
-wtransit1=1;
-wtransver1=1;
-wtransit2=1;
-wtransver2=1;
-wtransit3=1;
-wtransver3=1;
-
+% wtransit1=1;
+% wtransver1=1;
+% wtransit2=1;
+% wtransver2=1;
+% wtransit3=1;
+% wtransver3=1;
+% 
 % weights from Freeland et al.
 % wtransit=1;
 % wtransver=1;
@@ -55,12 +55,12 @@ wtransver3=1;
 
 %assign weights to different changes (sub-matrices of edges)
 %weights from Freeland-Hurst
-% wtransit1=1;
-% wtransver1=0.5;
-% wtransit2=0.5;
-% wtransver2=0.1;
-% wtransit3=1;
-% wtransver3=1;
+wtransit1=1;
+wtransver1=0.5;
+wtransit2=0.5;
+wtransver2=0.1;
+wtransit3=1;
+wtransver3=1;
 
 % Gunnar's weights
 % wtransit1=1;
@@ -103,6 +103,17 @@ if (equif)
     die('The Bst and BFH matrices should probably also be treated here');
 end
 
+%% theoretical polar requirement
+scoretype = 'theoretical Polar all-1-weights';
+A=Atheoreticpolar;
+
+fixed = [1 3 10 11 18 19];
+permutecode_subsets;
+makegraph;
+
+return;
+
+
 %% Theoretical polar requirement
 scoretype = 'theoretical Polar FH weights';
 A=Atheoreticpolar;
@@ -111,16 +122,6 @@ CreateQAP(scoretype,fixed,A,B);
 return;
 
 permutecode_random;
-makegraph;
-
-return;
-
-%% Original polar requirement
-scoretype = 'original Polar all-1-weights';
-A=Apolar;
-
-fixed = [1 2 3 10 11 18 19];
-permutecode_subsets;
 makegraph;
 
 return;

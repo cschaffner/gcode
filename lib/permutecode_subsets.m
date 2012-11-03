@@ -11,7 +11,7 @@
 
 % created: March 2, 2011
 % cleaned: Oct 21, 2011
-% by Christian Schaffner, c.schaffner@yva.nl
+% by Christian Schaffner, c.schaffner@uva.nl
 
 %% clear workspace and read in genetic code matrices
 
@@ -31,7 +31,7 @@ B2 = B2(1:20,1:20);
 B3 = B3(1:20,1:20);
 
 %% define subsets
-% allowed permutation subsets from "Early Fisaction of an Optimal Genetic Code" by
+% allowed permutation subsets from "Early Fixaction of an Optimal Genetic Code" by
 % Freeland et al. 
 % Mol. Biol. Evol. 17(4):511-518: 2000
 subset{1}=[1 6 10 17 18];
