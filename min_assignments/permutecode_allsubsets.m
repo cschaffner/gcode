@@ -21,17 +21,27 @@
 %% clear workspace and read in genetic code matrices
 geneticcode;
 A=Atheoreticpolar;
-scoretype = 'theoretic Polar all permutations';
+scoretype = 'th_polar_FH_weights_subsets_all_permutations';
 
-wtransit=1;
-wtransver=1;
+% % all-1 weights
+% wtransit=1;
+% wtransver=1;
+% 
+% wtransit1=wtransit;
+% wtransver1=wtransver;
+% wtransit2=wtransit;
+% wtransver2=wtransver;
+% wtransit3=wtransit;
+% wtransver3=wtransver;
 
-wtransit1=wtransit;
-wtransver1=wtransver;
-wtransit2=wtransit;
-wtransver2=wtransver;
-wtransit3=wtransit;
-wtransver3=wtransver;
+
+%weights from Freeland-Hurst
+wtransit1=1;
+wtransver1=0.5;
+wtransit2=0.5;
+wtransver2=0.1;
+wtransit3=1;
+wtransver3=1;
 
 
 % geneticcode should be called beforehand
@@ -133,7 +143,7 @@ timing(1,0);
 
 
 % loop over all permutations
-for j=1:3 %size(nzperm,1)
+for j=1:size(nzperm,1)
 for i=1:size(per,1)
     p=per(i,:)+nzperm(j,:);
 
@@ -154,7 +164,7 @@ end
 means(j)=MEAN(vals);
 end
 
- fname = strcat('output/',scoretype, num2str(size(fixed,2)),'blcksfix ', num2str(size(vals(i,:),2)),'samples');
+ fname = strcat(scoretype, num2str(size(fixed,2)),'blcksfix ', num2str(size(vals(i,:),2)),'samples');
   if (suppression==1) 
       fname=strcat(fname,' suppressed');
   end

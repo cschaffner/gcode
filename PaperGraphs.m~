@@ -45,7 +45,7 @@ fixed = [];
 
 % molecular distance matrix with all-1 weights
 A=MatrixPeter .^ 2;
-scoretype = 'molecular distance squared';
+scoretype = 'Molecular distance squared';
 
 permutecode_random;
 % save data to file for being able to just regenerate figure without

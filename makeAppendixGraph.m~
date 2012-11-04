@@ -57,7 +57,7 @@ end
               strcat( num2str(smaller), ' codes (',sprintf('%.3f%%',promil) , ') <= sgc' ) ; );
 %              strcat('sgc: ', sprintf('%2.2f',sgc(i)), ' min: ',sprintf('%.2f',min(vals(i,:))),' mean: ',sprintf('%.2f',mean(vals(i,:))),' std: ',sprintf('%.2f',std(vals(i,:))),' opt: ', sprintf('%.2f%%',optperc)) } );
       ylabel('Number of Codes');
-      title(horzcat(sprintf('10^%i',log10(bign)),' samples'));
+      title(horzcat(num2str(size(vals(i,:),2)),' samples'));
       
       % set axes:
       if (i>1)

@@ -46,13 +46,13 @@ disp('2 blocks fixed');
 fixblocks=mycombnk(fixed,2);
 for i=1:size(fixblocks,1)
     fb=fixblocks(i,:);
-    % compute the nb of codes that are better than the SGC for fixed blocks
-    % fb
-    nb=size(find(minper(:,fb(1))==fb(1) & minper(:,fb(2))==fb(2) ),1);
-    if (nb<3)
+    % filter out the codes that are better than the SGC for fixed blocks fb
+    bettercodes=find(minper(:,fb(1))==fb(1) & minper(:,fb(2))==fb(2));
+    nb=size(bettercodes,1);
+    if (nb<5 && min(minvals(bettercodes))==sgc(1) )
         fb   
-        find(minper(:,fb(1))==fb(1) & minper(:,fb(2))==fb(2)  )
-        minvals(find(minper(:,fb(1))==fb(1) & minper(:,fb(2))==fb(2)  ))
+        bettercodes
+        minvals(bettercodes)
     end
 end
 
@@ -61,11 +61,13 @@ disp('3 blocks fixed');
 fixblocks=mycombnk(fixed,3);
 for i=1:size(fixblocks,1)
     fb=fixblocks(i,:);
-    nb=size(find(minper(:,fb(1))==fb(1) & minper(:,fb(2))==fb(2) & minper(:,fb(3))==fb(3) ),1);
-    if (nb<3)
+    % filter out the codes that are better than the SGC for fixed blocks fb
+    bettercodes=find(minper(:,fb(1))==fb(1) & minper(:,fb(2))==fb(2) & minper(:,fb(3))==fb(3));
+    nb=size(bettercodes,1);
+    if (nb<5 && min(minvals(bettercodes))==sgc(1))
         fb   
-        find(minper(:,fb(1))==fb(1) & minper(:,fb(2))==fb(2) & minper(:,fb(3))==fb(3) )
-        minvals(find(minper(:,fb(1))==fb(1) & minper(:,fb(2))==fb(2) & minper(:,fb(3))==fb(3) ))
+        bettercodes
+        minvals(bettercodes)
     end
 end
 
@@ -73,9 +75,13 @@ disp('4 blocks fixed');
 fixblocks=mycombnk(fixed,4);
 for i=1:size(fixblocks,1)
     fb=fixblocks(i,:);
-    nb=size(find(minper(:,fb(1))==fb(1) & minper(:,fb(2))==fb(2) & minper(:,fb(3))==fb(3) & minper(:,fb(4))==fb(4) ),1);
-    if (nb<3)
-        fb        
+    % filter out the codes that are better than the SGC for fixed blocks fb
+    bettercodes=find(minper(:,fb(1))==fb(1) & minper(:,fb(2))==fb(2)& minper(:,fb(3))==fb(3) & minper(:,fb(4))==fb(4));
+    nb=size(bettercodes,1);
+    if (nb<5 && min(minvals(bettercodes))==sgc(1))
+        fb   
+        bettercodes
+        minvals(bettercodes)
     end
 end
 % 
