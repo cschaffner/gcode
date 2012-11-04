@@ -9,6 +9,7 @@ by Christian Schaffner, c.schaffner@uva.nl
 Installation:
 * Make sure the lib/ subdirectory is part of the path
 
+
 This directory contains the following files:
 VariousGraphs.m : main program module to set parameters and run computations
 makegraph.m : draws histograms from computed values
@@ -19,6 +20,23 @@ makeAppendixGraph.m: used to draw the histograms that appear in the appendix of 
 
 output/ : output directory where .fig and .pdf files are saved to
 PaperOutput/ : output directory with the graphs from the paper
+
+Eppstein/ : contains MATLAB code for the inverse parametric optimization
+  Eppstein_objective.m  :  gives the objective function           
+  Eppstein_q20_constraint.m : gives the constraints
+  Eppstein_steer.m : The main procedure
+  Eppstein_steer_all1weights_popt.mat : stores intermediate results
+  Eppstain_comparison.m : contains several sets of 20 numerical values which make the SGC optimal
+                          and plots them together with polar requirements.
+
+min_assignments/ : directory with matlab code for checking which are the minimal assignments to 
+                   fix such that the sgc is optimal when using the subset approach
+  permutecode_allsubsets.m : checks all permutations allowed by the subset approach and keeps the ones
+                             that are better than the sgc
+  minimal_fixed_assignment.m : based on the output of permutecode_allsubsets.m , finds out which are the 
+                               minimal subsets one can fix such that the sgc is optimal
+  th_polar_FH_weights_all_good_subset_permutations.mat : results of permutecode_allsubsets.m for FH weights
+  th_polar_all1weights_all_good_subset_permutations.mat : results of permutecode_allsubsets.m for all 1 weights
 
 aaindex/ : directory with Japanese amino acid property database and procedures to check them
   aaindex1 : database of amino acid properties from http://www.genome.jp/aaindex/
@@ -43,8 +61,14 @@ lib/ : this directory contains lots of helper functions, it has to be part of th
   lib/randperm.m : samples a random permutation
   lib/timing.m : timing and status functions for loops
 
-
 solver/ : contains non-MATLAB solvers
-  solver/qapbb.f : branch & bound FORTRAN solver from QAPLIB http://www.seas.upenn.edu/qaplib/codes.html
-  solver/qapbb : compiled version
-  solver/had12.dat : small test data set (for testing and to illustrate the expected format)
+  gqapd.tar.gz : original source package of GRASP heuristic
+  gqapd : compiled version
+  gqapd_dir/ : contains FORTRAN files and Makefile for GRASP heuristic
+    driver_mine.f : slightly modified original file. Output repeated at the end, so that only the last two lines 
+                    have to be read from MATLAB
+  mysimqap : compiled simulated annealing heuristic
+  qapsim_mine.f : slightly modified FORTRAN code for simulated anealing from QAPLIB
+  qapbb.f : branch & bound FORTRAN solver from QAPLIB http://www.seas.upenn.edu/qaplib/codes.html
+  qapbb : compiled version
+  had12.dat : small test data set (for testing and to illustrate the expected format)
