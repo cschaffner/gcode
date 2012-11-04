@@ -1,4 +1,3 @@
-
 c     ------------------------------------------------------------------
 c     A Greedy Randomized Adaptive Search Procedure (GRASP) for the
 c     Quadratic Assignment Problem (QAP)
@@ -175,7 +174,6 @@ c     ------------------------------------------------------------------
 
 
 
-
       subroutine srtcst(n,n2,beta,f,d,srtf,srtif,srtd,srtid,srtc,
      &                  srtic,indexd,indexf,cost,fdind)
 c     ------------------------------------------------------------------
@@ -299,7 +297,6 @@ c     ------------------------------------------------------------------
 
 
 
-
       subroutine stage1(n,n2,i,j,k,l,seed,alpha,beta,objv,indexd,indexf,
      &                  fdind,cost,a,b)
 c     ------------------------------------------------------------------
@@ -436,8 +433,6 @@ c     ------------------------------------------------------------------
 
 
 
-
-
       subroutine stage2(n,n2,i,j,k,l,seed,objv,alpha,f,d,srtc,srtic,a,b)
 c     ------------------------------------------------------------------
 c     stage2:  Builds a randomized greedy permutation starting from
@@ -593,8 +588,6 @@ c     ------------------------------------------------------------------
 
 
 
-
-
       subroutine savsol(n,objv,bestv,a,opta)
 c     ------------------------------------------------------------------
 c     savsol:  Saves current best solution.
@@ -647,8 +640,6 @@ c     ------------------------------------------------------------------
 
 
 
-
-
       subroutine local(n,n2,objv,f,d,a,b)
 c     ------------------------------------------------------------------
 c     local: Local 2-exchange on permutation array a. 
@@ -734,8 +725,6 @@ c     ------------------------------------------------------------------
 
 
 
-
-
       subroutine mkbseq(n,a,b)
 c     ------------------------------------------------------------------
 c     mkbseq: Change permutation arrays a and b to make b = (1,2,...,n).
@@ -783,8 +772,6 @@ c     ------------------------------------------------------------------
 
 
 
-
-
       subroutine insrtq(n2,v,iv,sizeq,q,iq)
 c     ------------------------------------------------------------------
 c     insrtq: Insert an element (v,iv) into a queue (q,iq).
@@ -851,8 +838,6 @@ c     ------------------------------------------------------------------
 
 
 
-
-
       subroutine removq(n2,v,iv,sizeq,q,iq)
 c     ------------------------------------------------------------------
 c     removq: Remove smallest element (v,iv) from a priority 
@@ -933,8 +918,6 @@ c     ------------------------------------------------------------------
       end
 
 
-
-
        real function randp(ix)
 c      -----------------------------------------------------------------
 c      randp: Portable pseudo-random number generator.
@@ -963,8 +946,6 @@ c     ------------------------------------------------------------------
 
 
 
-
-
       subroutine evalij(n,n2,i,j,xgain,f,d,a)
 c     ------------------------------------------------------------------
 c     evalij: Computes the gain in objective function by switching

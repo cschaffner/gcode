@@ -1,9 +1,9 @@
 %% performs Eppstein "inverse optimization" for 20 amino properties
 
-% May 16, 2011
 % by Christian Schaffner, c.schaffner@uva.nl
 % and Gunnar Klau
 
+% created: May 16, 2011
 % cleaned up version: Dec 5, 2011
 
 %% clear workspace 
@@ -132,6 +132,7 @@ end
 %% do non-convex solver work
 
 % initialization
+% "the further we are in the optimization, the more we look into details"
 if (x(21) < 50)
     % focus more into the detail by starting at the previous (rounded) end point
     x0(count,:) = x;
@@ -181,14 +182,13 @@ xopt(count,:)=x;
 
 %% set up problem with new amino properties for solver
 
-% first round x values to three digits after comma:
+% first round x values to three (or two in the beginning) digits after comma:
 x=round(x*roundconst)/roundconst;
 
 A = mypdist(x(1:20)') .^ 2;
 B = Bmatrix;
 
 CreateQAP(scoretype,[],A,B);
-
 
 %% run heuristics
 % "gqapd.f" GRASP algorithm
