@@ -1,6 +1,6 @@
 %% performs Eppstein "inverse optimization" for 20 amino properties
 
-% May 16, 2011
+% created: May 16, 2011
 % by Christian Schaffner, c.schaffner@uva.nl
 % and Gunnar Klau
 

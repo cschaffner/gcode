@@ -60,7 +60,8 @@ c call subroutine that does the work
        call qaph4(n, ia, ib, ic, miter, fiter, ft, jrep,
      *            maxdim, lperm, iwert, bool, perm)
 
-        print *,'best solution value and permutation:',iwert
+        print *,'best solution value and permutation:'
+        print *,iwert
 c        print '(1x,25i3)',(lperm(i),i=1,n)
         print *,(lperm(i),i=1,n)
        end

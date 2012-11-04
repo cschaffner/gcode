@@ -1,6 +1,6 @@
 %% the objective function for Eppstein's "inverse optimization" for 20 amino properties
 
-% June 29, 2011
+% created: June 29, 2011
 % by Christian Schaffner, c.schaffner@uva.nl
 
 function [f g H] = Eppstein_objective(x)
