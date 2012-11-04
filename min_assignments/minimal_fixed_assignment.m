@@ -19,7 +19,8 @@ fixed = [1 2 3 10 11 14 18 19];
 
 % load results of all subset computations
 %scoretype = 'theoretic Polar all subsets';
-load 'theoretic_Polar_all_good_subset_permutations.mat'
+%load 'th_polar_all1weights_all_good_subset_permutations.mat'
+load 'th_polar_FH_weights_all_good_subset_permutations.mat'
 
 % scoretype = 'Benner all subsets';
 % load 'output/Benner all subsets0blcksfix1samples.mat'

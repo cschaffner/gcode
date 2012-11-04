@@ -54,7 +54,7 @@ end
       optperc=(mean(vals(i,:))-sgc(i))/(mean(vals(i,:))-min(vals(i,:))) * 100;
       % output caption text:
       xlabel({strcat(scoretype,' Score', num2str(mod(i-1,4)),supp) ; 
-              strcat( num2str(smaller), ' codes (',sprintf('%.3f%%',promil) , ') <= sgc' ) ; );
+              strcat( num2str(smaller), ' codes (',sprintf('%.3f%%',promil) , ') <= sgc' )} );
 %              strcat('sgc: ', sprintf('%2.2f',sgc(i)), ' min: ',sprintf('%.2f',min(vals(i,:))),' mean: ',sprintf('%.2f',mean(vals(i,:))),' std: ',sprintf('%.2f',std(vals(i,:))),' opt: ', sprintf('%.2f%%',optperc)) } );
       ylabel('Number of Codes');
       title(horzcat(sprintf('10^%i',log10(bign)),' samples'));
@@ -70,7 +70,7 @@ end
   
 
   % write graphic to output directory
-  fname = strcat('PaperOutput/',scoretype, ' ',num2str(size(fixed,2)),'blcksfix ', num2str(size(vals(i,:),2)),'samples');
+  fname = strcat('PaperOutput/AppendixHistograms_', num2str(size(vals(i,:),2)),'samples');
   if (suppression==1) 
       fname=strcat(fname,' suppressed');
   end

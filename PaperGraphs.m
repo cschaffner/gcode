@@ -50,7 +50,7 @@ scoretype = 'molecular distance squared';
 permutecode_random;
 % save data to file for being able to just regenerate figure without
 % sampling
-save('PaperOutput/moldistance_data.mat',vals,sgc);
+save('PaperOutput/moldistance_data.mat','vals','sgc');
 clf; % clear figure 
 col = 1;
 makeAppendixGraph;
@@ -60,7 +60,7 @@ A=Atheoreticpolar;
 scoretype = 'theoretical polar requirement';
 
 permutecode_random;
-save('PaperOutput/th_pol_req_data.mat',vals,sgc);
+save('PaperOutput/th_pol_req_data.mat','vals','sgc');
 col = 0;
 makeAppendixGraph;
 
