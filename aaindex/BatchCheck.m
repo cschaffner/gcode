@@ -2,8 +2,8 @@
 
 % for how well they do with respect to MS0-value in the following settings:
 % * permuting all blocks
-% * fixing 6 blocks
-% * fixing 6 blocks and using subsets
+% * fixing 7 blocks
+% * fixing 7 blocks and using subsets
 
 % all of this for all-1 and FH weights
 
@@ -58,7 +58,7 @@ for j=1:nrloops
     % how many codes were smaller than sgc for FH weights?    
     result(j,3)=sum(vals_FH(:) < sgc_FH);
 
-    % fixing 6 blocks
+    % fixing 7 blocks
     fixed = [1 2 3 10 11 18 19];
     permutecode_random;    
     % how many codes were smaller than sgc for st weights?
@@ -66,7 +66,7 @@ for j=1:nrloops
     % how many codes were smaller than sgc for FH weights?    
     result(j,5)=sum(vals_FH(:) < sgc_FH);
     
-    % fixing 6 blocks and subsets
+    % fixing 7 blocks and subsets
     fixed = [1 2 3 10 11 18 19];
     permutecode_subsets;    
     % how many codes were smaller than sgc for st weights?

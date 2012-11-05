@@ -29,10 +29,8 @@ maxx=max([sgc(1) vals(1,:)])+0.2;
 set(gca,'xlim',[minx,maxx] );  
 
 % draw line for particular codes:
-%plot([sgc(1), sgc(1)], [0, max(nn{1})],'--rs');
-[figx figy] = dsxy2figxy(gca, sgc(1), 0);
-arrow([figx figx],[0.82 0.12],'Width',10)
-
+plot([sgc(1), sgc(1)], [0, max(nn{1})],'--rs','LineWidth',2);
+%[figx figy] = dsxy2figxy(gca, sgc(1), 0);
 % annotation('textarrow',[figx figx],...
 %     [0.82 0.12],'TextEdgeColor','none',...
 %     'TextLineWidth',8,...

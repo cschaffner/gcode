@@ -26,6 +26,7 @@ suppression = 0;
 
 %% names of amino acids
 aminos = {'Phe','Leu','Ile','Met','Val','Ser','Pro','Thr','Ala','Tyr', 'His', 'Gln', 'Asn', 'Lys', 'Asp', 'Glu', 'Cys', 'Trp', 'Arg', 'Gly', 'STOP'};
+aminoshort = {'F','L','I','M','V','S','P','T','A','Y','H','Q','N','K','D','E','C','W','R','G'};
 
 %% various amino acid values (variable names starting with aa_)
 % from the original Haig and Hurst

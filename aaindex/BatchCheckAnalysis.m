@@ -2,8 +2,8 @@
 
 % for how well they do with respect to MS0-value in the following settings:
 % * permuting all blocks
-% * fixing 6 blocks
-% * fixing 6 blocks and using subsets
+% * fixing 7 blocks
+% * fixing 7 blocks and using subsets
 
 % analysis of results produced by BatchCheck.m
 

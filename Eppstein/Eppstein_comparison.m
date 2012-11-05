@@ -8,12 +8,13 @@
 clear;
 
 %% reading in things
-
-polar=[ 50 49 49 53 56 75 66 66 70 54 84 86 100 101 130 125 48 52 91 79]/10;
-polarvals=polar;
-
-% theoretical PR (polar requirement)
-theoreticalPR = [ 4.5 4.4 5.0 5.0 6.2 7.5 6.1 6.2 6.5 7.7 7.9 8.9 9.6 10.2 12.2 13.6 4.3 4.9 8.6 9.0];
+geneticcode;
+% 
+% polar=[ 50 49 49 53 56 75 66 66 70 54 84 86 100 101 130 125 48 52 91 79]/10;
+% polarvals=polar;
+% 
+% % theoretical PR (polar requirement)
+% theoreticalPR = [ 4.5 4.4 5.0 5.0 6.2 7.5 6.1 6.2 6.5 7.7 7.9 8.9 9.6 10.2 12.2 13.6 4.3 4.9 8.6 9.0];
 
 % sets of 20 numerical values for amino-acid properties which make the SGC most error robust
 
@@ -62,13 +63,34 @@ FHw=[-1.46	-1.33	-1.26	0.24	0.25
 0.09	-0.08	0.28	0.64	0.64
 0.24	-0.14	0.17	0.6	0.6];
 
+%% comparing things
 
-M=vertcat(polar,theoreticalPR,w1',FHw');
-M=normalize(M);
+count=size(aaindex1,1);
+A=vertcat(aaindex1,w1',FHw');
+
+% compute correlations
+C=corrcoef(A');
+
+%interesting part, without self-correlations
+CC=C(count+1:count+9,1:count);
+for i=1:9
+    [rows,cols]=find(abs(C(count+i,1:count)>0.8));
+    if ~isempty(cols)
+        for j=1:size(cols,2)
+ %    fprintf('%i correlates well with %i (coeff: %f)\n',i,char(name(cols(j))),C(count+1,cols(j)))
+            fprintf('%i correlates well with %i (coeff: %f)\n',i,cols(j),C(count+i,cols(j)))
+        end
+        fprintf('\n');
+    end
+end
+
+
+break;
+
 
 %% plotting things
-aminos = {'Phe','Leu','Ile','Met','Val','Ser','Pro','Thr','Ala','Tyr', 'His', 'Gln', 'Asn', 'Lys', 'Asp', 'Glu', 'Cys', 'Trp', 'Arg', 'Gly'};
-aminoshort = {'F','L','I','M','V','S','P','T','A','Y','H','Q','N','K','D','E','C','W','R','G'};
+M=vertcat(aa_polar,aa_theoreticalPR,w1',FHw');
+M=normalize(M);
 
 nmin=1;
 nmax=10;
@@ -83,11 +105,12 @@ for i=nmin:step:nmax
     [~,index]=sort(M(i,:));
     iindex=[index ; (-1) .^[1:20] ];
     iiindex=sortrows(iindex')';
-    text(M(i,:)-0.01,ones(1,20)*ycount  - iiindex(2,:)*0.1,aminoshort);
+    text(M(i,:)-0.01,ones(1,20)*ycount  - iiindex(2,:)*0.2,aminoshort);
 %    text(M(i,:)-0.01,ones(1,20)*ycount - ones(1,20)*0.05 - iiindex(2,:)*0.1,aminoshort);
 end
 axis([-2 3 0.5 10.5]);
 
 hold off;
 
-break;
+
+
