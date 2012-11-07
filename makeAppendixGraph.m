@@ -53,7 +53,13 @@ end
       promil=smaller/size(vals(i,:),2)*100;
       optperc=(mean(vals(i,:))-sgc(i))/(mean(vals(i,:))-min(vals(i,:))) * 100;
       % output caption text:
-      xlabel({strcat(scoretype,' Score', num2str(mod(i-1,4)),supp) ; 
+      if i==1
+          scorecaption = ' MS_0';
+      else
+          scorecaption = strcat(' MScore_', num2str(mod(i-1,4)));
+      end
+      
+      xlabel({strcat(scoretype,', ',scorecaption,supp) ; 
               strcat( num2str(smaller), ' codes (',sprintf('%.3f%%',promil) , ') <= sgc' )} );
 %              strcat('sgc: ', sprintf('%2.2f',sgc(i)), ' min: ',sprintf('%.2f',min(vals(i,:))),' mean: ',sprintf('%.2f',mean(vals(i,:))),' std: ',sprintf('%.2f',std(vals(i,:))),' opt: ', sprintf('%.2f%%',optperc)) } );
       ylabel('Number of Codes');

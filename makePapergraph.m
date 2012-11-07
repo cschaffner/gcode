@@ -44,7 +44,7 @@ plot([sgc(1), sgc(1)], [0, max(nn{1})],'--rs','LineWidth',2);
 
 hold off;
 
-xlabel('$MS_0$-value');
+xlabel(xcaption);
 ylabel('Number of Codes');
 % title(horzcat(num2str(size(fixed,2)),' blocks fixed, ', num2str(size(vals(i,:),2)),' values'));
 

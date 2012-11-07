@@ -45,6 +45,7 @@ B3 = B3(1:20,1:20);
 
 fixed = [1 2 3 10 11 18 19];
 permutecode_subsets;
+xcaption='MS_0^{FH} value'
 makePapergraph;
 
 
@@ -73,9 +74,9 @@ B3 = B3(1:20,1:20);
 
 fixed = [1 2 3 10 11 18 19];
 permutecode_subsets;
+figure;
+xcaption='MS_0 value'
 makePapergraph;
-
-return;
 
 %% create histograms in the Appendix
 
@@ -109,20 +110,36 @@ fixed = [];
 A=MatrixPeter .^ 2;
 scoretype = 'molecular distance squared';
 
-permutecode_random;
-% save data to file for being able to just regenerate figure without
-% sampling
-save('PaperOutput/moldistance_data.mat','vals','sgc');
+% load data if it exists, otherwise: compute and save it
+if (exist('PaperOutput/moldistance_data.mat'))
+    load('PaperOutput/moldistance_data.mat');
+    fprintf('Loaded previous data, containing %i values\n',size(vals,2))
+else
+    permutecode_random;
+    % save data to file for being able to just regenerate figure without
+    % sampling
+    save('PaperOutput/moldistance_data.mat','vals','sgc');
+end
+
 clf; % clear figure 
 col = 1;
 makeAppendixGraph;
 
 % Theoretical polar requirement
 A=Atheoreticpolar;
-scoretype = 'theoretical polar requirement';
+scoretype = 'updated polar requirement';
 
-permutecode_random;
-save('PaperOutput/th_pol_req_data.mat','vals','sgc');
+% load data if it exists, otherwise: compute and save it
+if (exist('PaperOutput/th_pol_req_data.mat'))
+    load('PaperOutput/th_pol_req_data.mat');
+    fprintf('Loaded previous data, containing %i values\n',size(vals,2))
+else
+    permutecode_random;
+    % save data to file for being able to just regenerate figure without
+    % sampling
+    save('PaperOutput/th_pol_req_data.mat','vals','sgc');
+end
+
 col = 0;
 makeAppendixGraph;
 
