@@ -3,7 +3,7 @@ These tools have been used to obtain the numerical results and plots in a forthc
 by Harry Buhrman, Peter van der Gulik, Dave Spijer, Gunnar Klau, Leen Stougie, Christian Schaffner
 
 created: Oct 21, 2011
-last modified: Nov 3, 2012
+last modified: Nov 7, 2012
 by Christian Schaffner, c.schaffner@uva.nl
 
 Installation:
@@ -63,12 +63,22 @@ lib/ : this directory contains lots of helper functions, it has to be part of th
 
 solver/ : contains non-MATLAB solvers
   gqapd.tar.gz : original source package of GRASP heuristic
-  gqapd : compiled version
+  gqapd : compiled version, might have to be recompiled depending on the platform
   gqapd_dir/ : contains FORTRAN files and Makefile for GRASP heuristic
     driver_mine.f : slightly modified original file. Output repeated at the end, so that only the last two lines 
                     have to be read from MATLAB
-  mysimqap : compiled simulated annealing heuristic
+  mysimqap : compiled simulated annealing heuristic, might have to be recompiled depending on the platform
   qapsim_mine.f : slightly modified FORTRAN code for simulated anealing from QAPLIB
   qapbb.f : branch & bound FORTRAN solver from QAPLIB http://www.seas.upenn.edu/qaplib/codes.html
-  qapbb : compiled version
+  qapbb : compiled version, might have to be recompiled depending on the platform
   had12.dat : small test data set (for testing and to illustrate the expected format)
+
+molstruct/ : contains code for computing molecular distances between amino-acids
+  /amino : contains .mol files for all 20 amino acids
+  /results : contains .png pictures of all pairwise comparisons
+  *.out : contains the isomorphisms to the maximal common subgraph of all pairwise comparisons
+  *.mol : contains the maximal common subgraphs of all pairwise comparisons
+  struc.py : Python program to actually compute the pairwise distances
+  	     in order to find the maximal common subgraphs, it runs the Java SMSD from 
+	     http://www.ebi.ac.uk/thornton-srv/software/SMSD/
+	     which needs to be downloaded and installed separately
