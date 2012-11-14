@@ -37,13 +37,13 @@ NB=1;
 
 % convert to integers
 while (norm(A*NA-round(A*NA)) > 0.0001)  NA=NA*10; end
-fprintf('A matrix was multiplied by: %d \n',NA);
+%fprintf('A matrix was multiplied by: %d \n',NA);
 if (NA>10^6) % then A should be rounded to start with!
     error('A should be rounded first, solver does not like HUGE integers');
 end
 
 while (norm(B*NB-round(B*NB)) > 0.0001)  NB=NB*10; end
-fprintf('B matrix was multiplied by: %d \n',NB);
+%fprintf('B matrix was multiplied by: %d \n',NB);
 if (NB>10^6) % then B should be rounded to start with!
     error('B should be rounded first, solver does not like HUGE integers');
 end
@@ -65,7 +65,7 @@ if (min(min(Bexp))<0)
 end
 
 % constant term
-fprintf('constant term: %6.0f \n',sum(sum(A(fixed,fixed) .* B(fixed,fixed)*NA*NB)))
+%fprintf('constant term: %6.0f \n',sum(sum(A(fixed,fixed) .* B(fixed,fixed)*NA*NB)))
 
 % linear term (times two, because symmetric)
 Cexp=2*A(sort(fixed),indper)'*B(sort(fixed),indper)*NA*NB;
