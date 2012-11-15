@@ -62,15 +62,31 @@ end
       xlabel({strcat(scoretype,', ',scorecaption,supp) ; 
               strcat( num2str(smaller), ' codes (',sprintf('%.3f%%',promil) , ') <= sgc' )} );
 %              strcat('sgc: ', sprintf('%2.2f',sgc(i)), ' min: ',sprintf('%.2f',min(vals(i,:))),' mean: ',sprintf('%.2f',mean(vals(i,:))),' std: ',sprintf('%.2f',std(vals(i,:))),' opt: ', sprintf('%.2f%%',optperc)) } );
-      ylabel('Number of Codes');
-      title(horzcat(sprintf('10^%i',log10(bign)),' samples'));
+      if strcmp(scoretype,'updated polar requirement')
+          if i==1
+            ylabel({'\fontsize{16}overall';'\fontsize{10} ';'Number of Codes'});
+          elseif i==2
+            ylabel({'\fontsize{16}1st codon pos';'\fontsize{10} ';'Number of Codes'});
+          elseif i==3
+            ylabel({'\fontsize{16}2nd codon pos';'\fontsize{10} ';'Number of Codes'});
+          elseif i==4
+            ylabel({'\fontsize{16}3rd codon pos';'\fontsize{10} ';'Number of Codes'});
+          end
+      else
+        ylabel('Number of Codes');
+      end
+      if (i==1)
+        title({['\fontsize{16}',scoretype]; '\fontsize{10} '; [sprintf('10^%i',log10(bign)),' samples']});
+      else          
+        title(horzcat(sprintf('10^%i',log10(bign)),' samples'));
+      end
       
       % set axes:
       if (i>1)
-        set(gca,'xlim',[min([sgc(2:4) gmc(2:4) fhp(2:4) min(min(vals(2:4,:)))]),max([sgc(2:4) gmc(2:4) fhp(2:4) max(max(vals(2:4,:)))])]);
+        set(gca,'xlim',[min([sgc(2:4) min(min(vals(2:4,:)))]),max([sgc(2:4) max(max(vals(2:4,:)))])]);
         set(gca,'ylim',[0,maxnn]);
       else
-        set(gca,'xlim',[min([fhp(1) gmc(1) sgc(1) vals(1,:)]),max([fhp(1) gmc(1) sgc(1) vals(1,:)])]);  
+        set(gca,'xlim',[min([sgc(1) vals(1,:)]),max([sgc(1) vals(1,:)])]);  
       end
   end
   
