@@ -22,7 +22,7 @@ counter=0;
 keep=[];
 
 for i=1:size(result,1)
-    if sum(result(i,2:7)<100)>4 
+    if sum(result(i,2:7)<20)>4 
         counter=counter+1;
         keep=[result(i,:) ; keep];
     end
@@ -34,7 +34,7 @@ keep
 %% set parameters of what we want to do
 
 % nr of samples
-bign = 10^5;
+bign = 10^6;
 
 % equif-flag
 equif=0;
