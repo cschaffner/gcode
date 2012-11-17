@@ -16,7 +16,7 @@ geneticcode;
 %% set parameters of what we want to do
 
 % nr of samples
-bign = 10^3;
+bign = 5*10^3;
 
 % equif-flag
 equif=0;
@@ -40,7 +40,7 @@ result=zeros(nrloops,7);
 %intialize timer
 timing(3,0);
 
-for j=1:nrloops
+for j=540:nrloops
     ind=looplist(j);
     result(j,1)=ind;
     % skip aa values where some properties are unknown
@@ -81,3 +81,5 @@ for j=1:nrloops
      end
 
 end
+
+save('BatchCheckResult.mat','result','j');

@@ -179,7 +179,38 @@ while ~feof(fid)
     textscan(fid,'////');
 end
 fclose(fid);
+% add our own values to the database in order to be able to compare
+count = count + 1;
+aaind_name{count}='OWN1';
+aaind_desc{count}='Original Polar Requirements (Woese 1966)';
+aaindex1(count,:)=aa_polar;
+count = count + 1;
+aaind_name{count}='OWN2';
+aaind_desc{count}='Updated Polar Requirements (Mathew, Luthey-Schulten 2008)';
+aaindex1(count,:)=aa_theoreticalPR;
+count = count + 1;
+aaind_name{count}='OWN3';
+aaind_desc{count}='Granthams Volume';
+aaindex1(count,:)=aa_Grantham;
+count = count + 1;
+aaind_name{count}='OWN4';
+aaind_desc{count}='Hydropathy';
+aaindex1(count,:)=aa_hydropathy;
+count = count + 1;
+aaind_name{count}='OWN5';
+aaind_desc{count}='Isoelectic Point';
+aaindex1(count,:)=aa_isoelectric;
+count = count + 1;
+aaind_name{count}='BGKSSS12_1';
+aaind_desc{count}='Some set of 20 values that make SGC optimal with Haig-Hurst weights (2012)';
+aaindex1(count,:)=aa_w1(:,1)';
+count = count + 1;
+aaind_name{count}='BGKSSS12_2';
+aaind_desc{count}='Some set of 20 values that make SGC optimal with Freeland-Hurst weights (2012)';
+aaindex1(count,:)=aa_FH(:,1)';
+
 clear C D F count;
+
 
 
 %% define other A matrices:

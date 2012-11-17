@@ -17,12 +17,12 @@ geneticcode;
 load BatchCheckResult.mat;
 
 % add a first column with the index number
-result = [[1:size(result,1)]' result];
+%result = [[1:size(result,1)]' result];
 counter=0;
 keep=[];
 
 for i=1:size(result,1)
-    if sum(result(i,2:7)<20)>4 
+    if sum(result(i,2:7)<100)>4 
         counter=counter+1;
         keep=[result(i,:) ; keep];
     end
@@ -74,7 +74,7 @@ for j=1:nrloops
     % how many codes were smaller than sgc for FH weights?    
     result(j,3)=sum(vals_FH(:) < sgc_FH);
 
-    % fixing 6 blocks
+    % fixing 7 blocks
     fixed = [1 2 3 10 11 18 19];
     permutecode_random;    
     % how many codes were smaller than sgc for st weights?
@@ -82,7 +82,7 @@ for j=1:nrloops
     % how many codes were smaller than sgc for FH weights?    
     result(j,5)=sum(vals_FH(:) < sgc_FH);
     
-    % fixing 6 blocks and subsets
+    % fixing 7 blocks and subsets
     fixed = [1 2 3 10 11 18 19];
     permutecode_subsets;    
     % how many codes were smaller than sgc for st weights?
@@ -97,3 +97,5 @@ for j=1:nrloops
      end
 
 end
+
+save('BatchCheckRefinedResult.mat','result','j');
