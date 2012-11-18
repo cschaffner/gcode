@@ -21,10 +21,10 @@ c the matrices are read row by row: now specific format
        do 11 i=1,n
  11       read (5,*) (ib(i,j), j=1,n)
        do 12 i=1,n
- 12       read (5,*,end=13) (ic(i,j), j=1,n)
-        print *,'linear term detected and incorporated.'
+       do 12 j=1,n
+ 12       read (5,*,end=13) ic(i,j)
         goto 20
- 13     print *,'no linear term.'
+ 13     print *,'no linear term...'
         do 14 i=1,n
         do 14 j=1,n
  14             ic( i,j)=0
@@ -34,11 +34,11 @@ c set control parameters:
 c       print *,'number of restarts (default: 10)'
 c       read *,jrep
         jrep=0
-       if (jrep .lt. 1) jrep = 80
+       if (jrep .lt. 1) jrep = 10
 c       print *,'iterations at constant temp. (default: 2n)'
 c       read *,miter
         miter = 0.0
-       if (miter .lt. 1) miter = 3*n
+       if (miter .lt. 1) miter = 2*n
 c       print *,'factor to increase iterations (default: 1.1)'
 c       read *,fiter
         fiter = 0.0
@@ -51,19 +51,17 @@ c       print *,'seed for random number generator:'
 c       read *,lperm(1)
         lperm(1) = n
 c echo control parameters:
-        print 1, jrep, miter, fiter, ft, lperm(1)
- 1      format(2x,'restarts:',10x, i5,/,2x,'iter. for temp. constant:',
-     *       i5, /,2x, 'factor for iter.:', f7.4,/,2x,
-     *       'cooling param.:',f7.4,/,2x,'seed:',i15)
+c        print 1, jrep, miter, fiter, ft, lperm(1)
+c 1      format(2x,'restarts:',10x, i5,/,2x,'iter. for temp. constant:',
+c     *       i5, /,2x, 'factor for iter.:', f7.4,/,2x,
+c     *       'cooling param.:',f7.4,/,2x,'seed:',i15)
 
 c call subroutine that does the work
        call qaph4(n, ia, ib, ic, miter, fiter, ft, jrep,
      *            maxdim, lperm, iwert, bool, perm)
 
-        print *,'best solution value and permutation:'
-        print *,iwert
-c        print '(1x,25i3)',(lperm(i),i=1,n)
-        print *,(lperm(i),i=1,n)
+        print *,'best solution value and permutation:',iwert
+        print '(1x,25i3)',(lperm(i),i=1,n)
        end
 
       subroutine qaph4( n, a, b, c, miter, fiter, ft, rep,

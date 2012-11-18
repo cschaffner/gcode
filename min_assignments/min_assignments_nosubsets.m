@@ -69,7 +69,7 @@ second=0;
 skipset=0;
 goodfixmore={};
 
-for k=3:18
+for k=1:18
     % create a matrix where in each row contains a different permutation with
     % k out of the nonfix positions
     fixmore=mycombnk(nonfix,k);
@@ -102,7 +102,7 @@ for k=3:18
             continue;
         end
         
-        CreateQAP(scoretype,ff,A,B);
+        CreateQAP(scoretype,ff,A,Bmatrix);
         % run heuristics
         % "qapsim.f" from http://www.seas.upenn.edu/qaplib/codes.html
         % this is the faster one, the other heuristic will only be run if
@@ -110,31 +110,20 @@ for k=3:18
         [status, result1] = system([solverdir,'mysimqap < ',filenameinput,' | tail -2']);
         % returns a new permutation as result
 
+        % "gqapd.f" GRASP algorithm
+        % Notice that the other heuristic cannot handle linear terms!!!
+        
         % reformat this new permutation
         [cost1,pos]=textscan(result1,'%d64',1);
         pnew1=textscan(result1(pos+1:end),'%2f');
         ppnew=pnew1{1}';
 
         if sum(ppnew==1:persize)==persize
-            % run the other heuristic to double-check
-            % "gqapd.f" GRASP algorithm
-            [status, result2] = system([solverdir,'gqapd < ',filenameinput,' | tail -2']);
-            % returns a new permutation as result
-            % reformat this new permutation
-            [cost2,pos]=textscan(result2,'%d64',1);
-            pnew2=textscan(result2(pos+1:end),'%2f');
-            ppnew2=pnew2{1}';
-            
-            if size(strmatch('Floating Exception',result2),1) || sum(ppnew2==1:persize)==persize
-                fprintf('fixing (in addition) the following makes the SGC optimal:');
-                fixmore(i,:)
+            fprintf('fixing (in addition) the following makes the SGC optimal:');
+            fixmore(i,:)
 
-                goodcount = goodcount + 1;
-                goodfixmore{goodcount}=fixmore(i,:);
-            else
-                second = second +1;
-                fprintf('the second heuristic found a better permutation');
-            end
+            goodcount = goodcount + 1;
+            goodfixmore{goodcount}=fixmore(i,:);
         end
 
     end

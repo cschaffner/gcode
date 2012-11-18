@@ -14,7 +14,8 @@
 geneticcode;
 
 % potentially fixed blocks
-fixed = [1 2 3 10 11 14 18 19];
+%fixed = [1 2 3 10 11 14 18 19];
+fixed = [1 2 3 10 11 18 19];
 
 
 % load results of all subset computations
