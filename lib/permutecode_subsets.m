@@ -95,6 +95,15 @@ for i=2:nrsubsets
     per=per+nzperm(indices,:);
 end
 
+% validity check of permutations (not strictly necessary)
+for i=1:size(per,1)
+    if sum(sort(per(i,:))==1:20)<20
+        fprintf('this is not a valid permutation!')
+        i
+        per(i,:)
+        return
+    end
+end
 
 %% scores for all those permutations created above (implemented with for loop )
 vals=zeros(4,size(per,1));
@@ -104,6 +113,7 @@ vals_FH=zeros(size(per,1),1);
 % initialize timer
 timing(2,0);
 
+tic
 % loop over all permutations
 for i=1:size(per,1)
     p=per(i,:);
@@ -123,6 +133,7 @@ for i=1:size(per,1)
     timing(2,i/size(per,1));
     
 end
+toc
 
 %% compute sum of all entries of the B matrices ("norm"), 
 % i.e. the nb of (possibly weighted) edges in the (sub-graph)

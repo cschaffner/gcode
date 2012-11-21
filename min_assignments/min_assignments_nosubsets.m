@@ -72,7 +72,7 @@ goodfixmore={};
 % error-robustness value of the SGC
 sgc=sum(sum(A .* Bmatrix));
 
-for k=9:18
+for k=1:18
     % create a matrix where in each row contains a different permutation with
     % k out of the nonfix positions
     fixmore=mycombnk(nonfix,k);
@@ -151,7 +151,7 @@ for k=9:18
 
     end
 
-    save('goodfixings.mat','goodcount','goodfixmore','second','k','ff');
+    save('goodfixings.mat','goodcount','goodfixmore','bbcount','k','ff');
 end
 
 return;

@@ -109,7 +109,9 @@ end
 scoretype = 'theoretical Polar all-1-weights';
 A=Atheoreticpolar;
 
-fixed = [1 3 10 11 18 19];
+%fixed = [1 3 10 11 18 19];
+fixed = [1 2 3 10 11 18 19];
+
 permutecode_subsets;
 makegraph;
 

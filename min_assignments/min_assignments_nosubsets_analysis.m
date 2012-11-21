@@ -56,6 +56,9 @@ load goodfixings_all1weights.mat
 % potentially fixed blocks
 fixed = [1 2 3 10 11 18 19];
 
+% error-robustness value of the SGC
+sgc=sum(sum(A .* Bmatrix));
+
 
 for i=1:size(goodfixmore,2)
     if size(intersect(fixed,goodfixmore{i}),2)==size(fixed,2)
@@ -66,7 +69,7 @@ for i=1:size(goodfixmore,2)
         
         % do some random checks
         sgc=sum(sum(A .* B));
-        for i=1:1000
+        for j=1:1000
             pp=randfixperm(20,ff);
             if sum(sum(A .* B(pp,pp)))<sgc
                 fprintf('problem detected!')
@@ -76,7 +79,7 @@ for i=1:size(goodfixmore,2)
             end
         end
         
-        CreateQAP(scoretype,ff,A,B);
+        [cons,N]=CreateQAP(scoretype,ff,A,B);
         % run full branch and bound QAP solver
         % can also handle linear terms
         [status, result1] = system([solverdir,'qapbb < ',filenameinput,' | tail -2']);
@@ -86,8 +89,9 @@ for i=1:size(goodfixmore,2)
         [cost1,pos]=textscan(result1,'%d64',1);
         pnew1=textscan(result1(pos+1:end),'%2f');
         ppnew=pnew1{1}';
+        val1=(cons+double(cost1{1}))/N;
 
-        if sum(ppnew==1:persize)<persize
+        if val1<sgc
             fprintf('problem detected with qapbb!');
             ppnew
             return;
