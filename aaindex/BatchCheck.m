@@ -40,7 +40,7 @@ result=zeros(nrloops,7);
 %intialize timer
 timing(3,0);
 
-for j=540:nrloops
+for j=1:nrloops
     ind=looplist(j);
     result(j,1)=ind;
     % skip aa values where some properties are unknown

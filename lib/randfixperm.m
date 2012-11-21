@@ -17,7 +17,7 @@ notfixperm=[0 notfixed(randperm(size(notfixed,2)))];
 % putting it together again
 p = notfixperm(locnotfixed+1)+ int8([1:n] .* ismember(1:n,fixed));
 
-if sum(sort(p) == 1:20)<20
+if sum(sort(p) == 1:n)<n
     die('error: randfixperm did not return a permutation');
 end
 

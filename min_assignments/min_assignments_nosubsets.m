@@ -69,6 +69,9 @@ second=0;
 skipset=0;
 goodfixmore={};
 
+% error-robustness value of the SGC
+sgc=sum(sum(A,Bmatrix));
+
 for k=1:18
     % create a matrix where in each row contains a different permutation with
     % k out of the nonfix positions
@@ -102,7 +105,7 @@ for k=1:18
             continue;
         end
         
-        CreateQAP(scoretype,ff,A,Bmatrix);
+        [cons,N]=CreateQAP(scoretype,ff,A,Bmatrix);
         % run heuristics
         % "qapsim.f" from http://www.seas.upenn.edu/qaplib/codes.html
         % this is the faster one, the other heuristic will only be run if
@@ -117,13 +120,29 @@ for k=1:18
         [cost1,pos]=textscan(result1,'%d64',1);
         pnew1=textscan(result1(pos+1:end),'%2f');
         ppnew=pnew1{1}';
+        val1=cons+(cost1/N);
 
-        if sum(ppnew==1:persize)==persize
-            fprintf('fixing (in addition) the following makes the SGC optimal:');
-            fixmore(i,:)
+        % we compare the obtained error-robustness with the sgc value
+        % instead of looking at the actual permutation, because there are 
+        % non-identical permutations which give the sgc as well (because
+        % some of the aa_theoreticalPR values are the same).
+        if val1 <= sgc
+            % we want to be really sure, so we run the branch and bound
+            % algorithm as well (even though that might take some time)
+            [status, result2] = system([solverdir,'qapbb < ',filenameinput,' | tail -2']);
+            % returns a new permutation as result
 
-            goodcount = goodcount + 1;
-            goodfixmore{goodcount}=fixmore(i,:);
+            % reformat this new permutation
+            [cost2,pos]=textscan(result2,'%d64',1);
+            val2=cons+(cost2/N);
+            
+            if val2 <= sgc
+                fprintf('fixing (in addition) the following makes the SGC optimal:');
+                fixmore(i,:)
+
+                goodcount = goodcount + 1;
+                goodfixmore{goodcount}=fixmore(i,:);
+            end
         end
 
     end

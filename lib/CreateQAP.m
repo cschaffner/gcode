@@ -6,10 +6,13 @@
 %   B : 20x20 matrix
 % writes QAP problem to file with name filename in subdirectory 'solver'
 %
-% created:    Nov 30, 2011
+% returns the constant term and the (overall) multiplication factor
+%
+% created:       Nov 30, 2011
+% last modified: Nov 21, 2012
 % by Christian Schaffner, c.schaffner@uva.nl
 
-function CreateQAP(filename,fixed,A,B)
+function [cons,N]=CreateQAP(filename,fixed,A,B)
 
 
 %% define filenames
@@ -64,8 +67,12 @@ if (min(min(Bexp))<0)
     error('the B matrix should not contain negative values...');
 end
 
-% constant term
-%fprintf('constant term: %6.0f \n',sum(sum(A(fixed,fixed) .* B(fixed,fixed)*NA*NB)))
+% overall multiplication factor
+N = NA * NB;
+
+%constant term
+cons=sum(sum(A(fixed,fixed) .* B(fixed,fixed)*N));
+fprintf('constant term: %6.0f \n',cons)
 
 % linear term (times two, because symmetric)
 Cexp=2*A(sort(fixed),indper)'*B(sort(fixed),indper)*NA*NB;
