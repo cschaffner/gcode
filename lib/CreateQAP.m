@@ -72,7 +72,7 @@ N = NA * NB;
 
 %constant term
 cons=sum(sum(A(fixed,fixed) .* B(fixed,fixed)*N));
-fprintf('constant term: %6.0f \n',cons)
+%fprintf('constant term: %6.0f \n',cons)
 
 % linear term (times two, because symmetric)
 Cexp=2*A(sort(fixed),indper)'*B(sort(fixed),indper)*NA*NB;

@@ -65,14 +65,14 @@ nonfix=setdiff(1:20,fixed);
 A = Atheoreticpolar;
 
 goodcount=0;
-second=0;
+bbcount=0;
 skipset=0;
 goodfixmore={};
 
 % error-robustness value of the SGC
-sgc=sum(sum(A,Bmatrix));
+sgc=sum(sum(A .* Bmatrix));
 
-for k=1:18
+for k=9:18
     % create a matrix where in each row contains a different permutation with
     % k out of the nonfix positions
     fixmore=mycombnk(nonfix,k);
@@ -83,7 +83,7 @@ for k=1:18
     for i=1:size(fixmore,1)        
         timing(4,i/size(fixmore,1));
         
-        fprintf('now testing to fix: (already found: %i)',goodcount);
+        fprintf('now testing to fix: (already found: %i, bb runs: %i)',goodcount,bbcount);
         fixmore(i,:)
         
         ff=sort([fixed,fixmore(i,:)]);
@@ -120,13 +120,14 @@ for k=1:18
         [cost1,pos]=textscan(result1,'%d64',1);
         pnew1=textscan(result1(pos+1:end),'%2f');
         ppnew=pnew1{1}';
-        val1=cons+(cost1/N);
+        val1=(cons+double(cost1{1}))/N;
 
         % we compare the obtained error-robustness with the sgc value
         % instead of looking at the actual permutation, because there are 
         % non-identical permutations which give the sgc as well (because
         % some of the aa_theoreticalPR values are the same).
-        if val1 <= sgc
+        if val1 == sgc                        
+            bbcount = bbcount +1;
             % we want to be really sure, so we run the branch and bound
             % algorithm as well (even though that might take some time)
             [status, result2] = system([solverdir,'qapbb < ',filenameinput,' | tail -2']);
@@ -134,15 +135,18 @@ for k=1:18
 
             % reformat this new permutation
             [cost2,pos]=textscan(result2,'%d64',1);
-            val2=cons+(cost2/N);
+            val2=(cons+double(cost2{1}))/N;
             
-            if val2 <= sgc
+            if val2 == sgc
                 fprintf('fixing (in addition) the following makes the SGC optimal:');
                 fixmore(i,:)
 
                 goodcount = goodcount + 1;
                 goodfixmore{goodcount}=fixmore(i,:);
             end
+        elseif val1 > sgc
+            fprintf('this can never happen, the sgc should have been found!')
+            return
         end
 
     end
