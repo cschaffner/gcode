@@ -3,7 +3,7 @@ These tools have been used to obtain the numerical results and plots in a forthc
 by Harry Buhrman, Peter van der Gulik, Dave Spijer, Gunnar Klau, Leen Stougie, Christian Schaffner
 
 created: Oct 21, 2011
-last modified: Nov 7, 2012
+last modified: Nov 22, 2012
 by Christian Schaffner, c.schaffner@uva.nl
 
 Installation:
@@ -37,13 +37,21 @@ min_assignments/ : directory with matlab code for checking which are the minimal
                                minimal subsets one can fix such that the sgc is optimal
   th_polar_FH_weights_all_good_subset_permutations.mat : results of permutecode_allsubsets.m for FH weights
   th_polar_all1weights_all_good_subset_permutations.mat : results of permutecode_allsubsets.m for all 1 weights
+  min_assignments_nosubsets.m : checks how which assignments need to be fixed for the SGC to be the most error-robust 
+                                genetic code, without using the subset approach
+  min_assignments_nosubsets_analysis.m : checks the minimal amount of additional fixations
+  goodfixings_all1weights.mat : result of running min_assignments_nosubsets.m for the all-1 weights
+  goodfixings_FHweights.mat : result of running min_assignments_nosubsets.m for the FH weights
 
 aaindex/ : directory with Japanese amino acid property database and procedures to check them
   aaindex1 : database of amino acid properties from http://www.genome.jp/aaindex/
   aaindex2 : matrices from http://www.genome.jp/aaindex/
-  aaindex/BatchCheck.m : checking all amino-acid values from aaindex1 
-  aaindex/BatchCheckAnalysis.m : analysis of results produced by BatchCheck.m
-  and more
+  BatchCheck.m : checking all amino-acid values from aaindex1 
+  BatchCheckAnalysis.m : analysis of results produced by BatchCheck.m
+  BatchCheckLatexOutput.m : creates latex table output
+  BatchCheckRefinedResult10_6.mat : refined results with 10^6 samples
+  BatchCheckResult50000.mat : scan results with 50000 samples
+  BatchCheck.xls : Excel table with (old) results
 
 lib/ : this directory contains lots of helper functions, it has to be part of the MATLAB path
   lib/CreateQAP.m : exports QAP problem to solver-readable format in subdirectory solver
@@ -52,6 +60,7 @@ lib/ : this directory contains lots of helper functions, it has to be part of th
   lib/geneticcode.m : clears workspace and reads in necessary data in order to play around and perform optimizations
   lib/invertp.m : inverts a permutation
   lib/istransit.m : helper function for geneticcode.m 
+  lib/mycombnk.m : helper function for permutecode_subsets and others
   lib/mypdist.m : helper function for geneticcode.m
   lib/mypdistweights.m : helper function for geneticcode.m
   lib/nonzeropermute.m : permutes non-zero entries of a vector
@@ -59,6 +68,7 @@ lib/ : this directory contains lots of helper functions, it has to be part of th
   lib/permutecode_subsets.m : checks all permutations among fixed subsets (specified in the code)
   lib/randfixperm.m : samples a random permutation with some fixed positions
   lib/randperm.m : samples a random permutation
+  lib/StandardCompetitionRankings.m : provides a ranking function (by Francesco Pozzi)
   lib/timing.m : timing and status functions for loops
 
 solver/ : contains non-MATLAB solvers
@@ -70,6 +80,7 @@ solver/ : contains non-MATLAB solvers
   mysimqap : compiled simulated annealing heuristic, might have to be recompiled depending on the platform
   qapsim_mine.f : slightly modified FORTRAN code for simulated anealing from QAPLIB
   qapbb.f : branch & bound FORTRAN solver from QAPLIB http://www.seas.upenn.edu/qaplib/codes.html
+  qapbb_mine.f : slightly modified output behavior, to make is easier to interface from matlab
   qapbb : compiled version, might have to be recompiled depending on the platform
   had12.dat : small test data set (for testing and to illustrate the expected format)
 
