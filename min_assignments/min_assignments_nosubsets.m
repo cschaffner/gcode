@@ -144,7 +144,7 @@ for k=1:18
                 goodcount = goodcount + 1;
                 goodfixmore{goodcount}=fixmore(i,:);
             end
-        elseif val1 > sgc
+        elseif (val1 - sgc)>eps(val1)
             fprintf('this can never happen, the sgc should have been found!')
             return
         end
