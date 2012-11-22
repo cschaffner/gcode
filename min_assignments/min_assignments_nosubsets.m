@@ -21,12 +21,12 @@ wtransit3=1;
 wtransver3=1;
 
 %weights from Freeland-Hurst
-% wtransit1=1;
-% wtransver1=0.5;
-% wtransit2=0.5;
-% wtransver2=0.1;
-% wtransit3=1;
-% wtransver3=1;
+wtransit1=1;
+wtransver1=0.5;
+wtransit2=0.5;
+wtransver2=0.1;
+wtransit3=1;
+wtransver3=1;
 
 % implement weights:
 B1=wtransit1*Btransit1 + wtransver1*Btransver1;

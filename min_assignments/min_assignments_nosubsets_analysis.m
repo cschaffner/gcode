@@ -59,44 +59,50 @@ fixed = [1 2 3 10 11 18 19];
 % error-robustness value of the SGC
 sgc=sum(sum(A .* Bmatrix));
 
+sizefixmore=zeros(size(goodfixmore,2),1);
 
 for i=1:size(goodfixmore,2)
-    if size(intersect(fixed,goodfixmore{i}),2)==size(fixed,2)
-        
-        i
-        ff=goodfixmore{i}       
-        persize=20-size(ff,2);
-        
-        % do some random checks
-        sgc=sum(sum(A .* B));
-        for j=1:1000
-            pp=randfixperm(20,ff);
-            if sum(sum(A .* B(pp,pp)))<sgc
-                fprintf('problem detected!')
-                sgc
-                pp                
-                return;
-            end
-        end
-        
-        [cons,N]=CreateQAP(scoretype,ff,A,B);
-        % run full branch and bound QAP solver
-        % can also handle linear terms
-        [status, result1] = system([solverdir,'qapbb < ',filenameinput,' | tail -2']);
-        % returns a new permutation as result
-        
-        % reformat this new permutation
-        [cost1,pos]=textscan(result1,'%d64',1);
-        pnew1=textscan(result1(pos+1:end),'%2f');
-        ppnew=pnew1{1}';
-        val1=(cons+double(cost1{1}))/N;
+    sizefixmore(i)=size(setdiff(goodfixmore{i},fixed),2);
+    
+    % do some sanity checks
+    i
+    ff=goodfixmore{i}       
+    persize=20-size(ff,2);
 
-        if val1<sgc
-            fprintf('problem detected with qapbb!');
-            ppnew
+    % do some random checks
+    sgc=sum(sum(A .* B));
+    for j=1:1000
+        pp=randfixperm(20,ff);
+        if sum(sum(A .* B(pp,pp)))<sgc
+            fprintf('problem detected!')
+            sgc
+            pp                
             return;
         end
-
     end
+
+    [cons,N]=CreateQAP(scoretype,ff,A,B);
+    % run full branch and bound QAP solver
+    % can also handle linear terms
+    [status, result1] = system([solverdir,'qapbb < ',filenameinput,' | tail -2']);
+    % returns a new permutation as result
+
+    % reformat this new permutation
+    [cost1,pos]=textscan(result1,'%d64',1);
+    pnew1=textscan(result1(pos+1:end),'%2f');
+    ppnew=pnew1{1}';
+    val1=(cons+double(cost1{1}))/N;
+
+    if val1<sgc
+        fprintf('problem detected with qapbb!');
+        ppnew
+        return;
+    end
+
+ %   end
 end    
+
+% display indices of minimal sizefixmore
+find(sizefixmore == min(sizefixmore))
+
 
