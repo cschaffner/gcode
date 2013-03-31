@@ -85,7 +85,7 @@ for i=1:9
 end
 
 
-break;
+%break;
 
 
 %% plotting things
@@ -100,7 +100,15 @@ hold on;
 ycount=0;
 for i=nmin:step:nmax
     ycount=ycount+1;
-    plot(M(i,:),ones(1,20)*ycount,'x')
+    if (1<=i && i<=2)
+        col='b';
+    elseif (3<=i && i<=6)
+        col='g';
+    elseif (7<=i && i<=nmax)
+        col='r';
+    end
+    plot(M(i,:),ones(1,20)*ycount,'kx')
+    line([-2 3],[i i],'Color',col);
     % we want the aminonames flipping up and down
     [~,index]=sort(M(i,:));
     iindex=[index ; (-1) .^[1:20] ];
@@ -108,6 +116,7 @@ for i=nmin:step:nmax
     text(M(i,:)-0.01,ones(1,20)*ycount  - iiindex(2,:)*0.2,aminoshort);
 %    text(M(i,:)-0.01,ones(1,20)*ycount - ones(1,20)*0.05 - iiindex(2,:)*0.1,aminoshort);
 end
+axis ij
 axis([-2 3 0.5 10.5]);
 
 hold off;
