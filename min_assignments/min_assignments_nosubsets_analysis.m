@@ -18,20 +18,20 @@ filenameinput=strcat(solverdir,scoretype, '.input');
 %% weights
 
 % standard weights:
-wtransit1=1;
-wtransver1=1;
-wtransit2=1;
-wtransver2=1;
-wtransit3=1;
-wtransver3=1;
-
-%weights from Freeland-Hurst
 % wtransit1=1;
-% wtransver1=0.5;
-% wtransit2=0.5;
-% wtransver2=0.1;
+% wtransver1=1;
+% wtransit2=1;
+% wtransver2=1;
 % wtransit3=1;
 % wtransver3=1;
+
+%weights from Freeland-Hurst
+wtransit1=1;
+wtransver1=0.5;
+wtransit2=0.5;
+wtransver2=0.1;
+wtransit3=1;
+wtransver3=1;
 
 % implement weights:
 B1=wtransit1*Btransit1 + wtransver1*Btransver1;
@@ -51,7 +51,7 @@ A = Atheoreticpolar;
 
 %% load results
 
-load goodfixings_all1weights.mat
+load goodfixings_FHweights.mat
 
 % potentially fixed blocks
 fixed = [1 2 3 10 11 18 19];
@@ -60,10 +60,17 @@ fixed = [1 2 3 10 11 18 19];
 sgc=sum(sum(A .* Bmatrix));
 
 sizefixmore=zeros(size(goodfixmore,2),1);
+sizeset=zeros(size(goodfixmore,2),1);
+
 
 for i=1:size(goodfixmore,2)
     sizefixmore(i)=size(setdiff(goodfixmore{i},fixed),2);
-    
+    sizeset(i)=size(goodfixmore{i},2);
+end
+return
+
+for i=1:size(goodfixmore,2)
+
     % do some sanity checks
     i
     ff=goodfixmore{i}       
@@ -73,7 +80,7 @@ for i=1:size(goodfixmore,2)
     sgc=sum(sum(A .* B));
     for j=1:1000
         pp=randfixperm(20,ff);
-        if sum(sum(A .* B(pp,pp)))<sgc
+        if sgc - sum(sum(A .* B(pp,pp))) > eps(sgc)
             fprintf('problem detected!')
             sgc
             pp                
@@ -93,7 +100,7 @@ for i=1:size(goodfixmore,2)
     ppnew=pnew1{1}';
     val1=(cons+double(cost1{1}))/N;
 
-    if val1<sgc
+    if sgc - val1 > eps(sgc)
         fprintf('problem detected with qapbb!');
         ppnew
         return;
